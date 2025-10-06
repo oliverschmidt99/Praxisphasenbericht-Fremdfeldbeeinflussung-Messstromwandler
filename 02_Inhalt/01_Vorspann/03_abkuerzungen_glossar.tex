@@ -5,24 +5,73 @@
 % =============================================================================
 
 % --- ABKÜRZUNGEN DEFINIEREN ---
-\newacronym{l1}{L1}{Leiter 1 (erste Phase des Drehstromsystems)}
-\newacronym{l2}{L2}{Leiter 2 (zweite Phase des Drehstromsystems)}
-\newacronym{l3}{L3}{Leiter 3 (dritte Phase des Drehstromsystems)}
+\newacronym{l1}{L1}{Phase L1}
+\newacronym{l2}{L2}{Phase L2}
+\newacronym{l3}{L3}{Phase L3}
 \newacronym{emv}{EMV}{Elektromagnetische Verträglichkeit}
-
+% --- NEUE ABKÜRZUNGEN ---
+\newacronym{ac}{AC}{Alternating Current (Wechselstrom)}
+\newacronym{dc}{DC}{Direct Current (Gleichstrom)}
+\newacronym{vde}{VDE}{Verband der Elektrotechnik, Elektronik und Informationstechnik}
+\newacronym{sps}{SPS}{Speicherprogrammierbare Steuerung}
 
 % --- FACHBEGRIFFE FÜRS GLOSSAR DEFINIEREN ---
 \newglossaryentry{sammelschiene}{
     name={Sammelschiene},
+    plural={Sammelschienen},
     description={Ein massiver elektrischer Leiter aus Kupfer oder Aluminium in einer Schaltanlage, der zur Verteilung hoher Ströme auf mehrere Abgänge dient.}
 }
 
 \newglossaryentry{fremdfeld}{
     name={Fremdfeld},
+    plural={Fremdfelder},
     description={Ein magnetisches oder elektrisches Feld, das von einer externen Quelle erzeugt wird und als Störgröße auf ein betrachtetes System einwirkt.}
 }
 
 \newglossaryentry{messstromwandler}{
     name={Messstromwandler},
-    description={Ein spezieller Transformator, der hohe Primärströme in ein proportionales, kleines und für Messgeräte verarbeitbares Sekundärsignal umwandelt.}
+    plural={Messstromwandler},
+    description={Ein spezieller Transformator, der hohe Primärströme in ein proportionales, kleines und für Messgeräte verarbeitbares Sekundärsignal umwandelt. Im Fachjargon oft verkürzt als 'Wandler' bezeichnet.}
+}
+
+\newglossaryentry{buerde}{
+    name={Bürde},
+    plural={Bürden},
+    description={Die Bürde beschreibt die an den Sekundärkreis eines Messwandlers angeschlossene Last (Impedanz). Sie wird üblicherweise in Voltampere (VA) angegeben und ist entscheidend für die Einhaltung der Genauigkeitsklasse.}
+}
+
+\newglossaryentry{genauigkeitsklasse}{
+    name={Genauigkeitsklasse},
+    plural={Genauigkeitsklassen},
+    description={Gibt die maximal zulässige prozentuale Messabweichung eines Messwandlers unter Nennbedingungen an. Gängige Klassen sind z.B. 0,2, 0,5 oder 1.}
+}
+
+\newglossaryentry{niederspannung}{
+    name={Niederspannung},
+    plural={Niederspannungen},
+    description={Bezeichnet nach IEC 60038 Wechselspannungen (AC) bis 1000 V und Gleichspannungen (DC) bis 1500 V. In diesem Bereich sind die meisten öffentlichen und industriellen Stromnetze angesiedelt.}
+}
+
+\newglossaryentry{induktionsgesetz}{
+    name={Induktionsgesetz},
+    plural={Induktionsgesetze},
+    description={Das Faradaysche Induktionsgesetz ist eine physikalische Grundlage der Elektrotechnik. Es besagt, dass eine zeitliche Änderung des magnetischen Flusses durch eine Leiterschleife eine elektrische Spannung in dieser Schleife induziert. Dies ist das Funktionsprinzip von Transformatoren und somit auch von Messstromwandlern.}
+}
+
+\newglossaryentry{niederspannungsschaltanlage}{
+    name={Niederspannungsschaltanlage},
+    plural={Niederspannungsschaltanlagen},
+    description={Eine Anlage zur Verteilung elektrischer Energie im Bereich der Niederspannung. Sie kombiniert Schaltgeräte zum Verbinden und Trennen von Stromkreisen mit Schutz- und Messeinrichtungen wie Sicherungen und Messstromwandlern.}
+}
+
+\newglossaryentry{femm}{
+    name={FEMM},
+    plural={FEMM},
+    description={Finite Element Method Magnetics. Eine quelloffene Software zur Simulation von 2D- und achsensymmetrischen Problemen der Elektrostatik und Magnetostatik. Sie wird häufig in der Elektrotechnik zur Analyse von magnetischen Feldern in Geräten wie Transformatoren, Motoren und auch zur Untersuchung von Fremdfeldeinflüssen eingesetzt.}
+}
+
+\newglossaryentry{erwaermungspruefstand}{
+    name={Erwärmungsprüfstand},
+    plural={Erwärmungsprüfstände},
+    description={Ein spezieller Prüfaufbau zur Verifizierung des thermischen Verhaltens von Schaltanlagen nach \acrshort{vde}-Norm. Mittels eines regelbaren Hochstromtransformators wird der Nenn- oder Überlaststrom bei sehr geringer Spannung (typischerweise unter 10 V) in die Hauptstrombahnen eingespeist. Dies simuliert die reale Wärmeverlustleistung (I²R) im Betrieb und ermöglicht die Überprüfung, ob die entstehende Wärme zuverlässig abgeführt wird und keine unzulässig hohen Temperaturen an Komponenten wie \glspl{sammelschiene} oder Schaltgeräten auftreten.}
 }
