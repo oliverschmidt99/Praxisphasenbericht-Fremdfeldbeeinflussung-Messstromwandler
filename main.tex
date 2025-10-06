@@ -1,0 +1,43 @@
+% =============================================================================
+% HAUPTDOKUMENT (main.tex)
+% =============================================================================
+
+% GEÄNDERT: Dokumentenklasse zu 'scrartcl' (Artikel) geändert
+\documentclass[11pt, a4paper, headsepline=0.4pt]{scrartcl}
+
+% --- EINSTELLUNGEN LADEN ---
+\input{01_Einstellungen/praeambel.tex}
+\input{01_Einstellungen/befehle.tex}
+
+% --- LITERATURQUELLE ANGEBEN ---
+\addbibresource{bibliographie.bib}
+
+% -----------------------------------------------------------------------------
+% DOKUMENTENBEGINN
+% -----------------------------------------------------------------------------
+\begin{document}
+
+% Deckblatt wird als unnummerierte Titelseite eingefügt
+\input{02_Inhalt/01_Vorspann/00_deckblatt.tex}
+
+% --- VORSAPNN ---
+\include{02_Inhalt/01_Vorspann/01_abstract}
+\input{02_Inhalt/01_Vorspann/02_verzeichnisse.tex}
+
+% --- HAUPTTEIL ---
+\include{02_Inhalt/02_Hauptteil/01_einleitung}
+\include{02_Inhalt/02_Hauptteil/02_theorieteil}
+\include{02_Inhalt/02_Hauptteil/03_methodenteil}
+\include{02_Inhalt/02_Hauptteil/04_ergebnisteil}
+\include{02_Inhalt/02_Hauptteil/05_diskussion_fazit}
+
+% --- ANHANG ---
+\appendix
+% In der Artikelklasse wird der Anhang mit \section eingeleitet
+\section{Anhang}
+
+% --- NACHSPANN ---
+\printbibliography[heading=bibintoc, title={Literaturverzeichnis}]
+\include{02_Inhalt/03_Nachspann/eigenstaendigkeitserklaerung}
+
+\end{document}
