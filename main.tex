@@ -11,7 +11,10 @@
 
 % --- LITERATURQUELLE ANGEBEN ---
 \addbibresource{bibliographie.bib}
-\addbibresource{bibliographie.bib}
+
+% --- DEFINITIONEN FÜR GLOSSAR LADEN ---
+% HINWEIS: Dieser Input-Befehl muss vor \begin{document} stehen!
+\input{02_Inhalt/01_Vorspann/03_abkuerzungen_glossar.tex}
 
 % -----------------------------------------------------------------------------
 % DOKUMENTENBEGINN
@@ -22,10 +25,17 @@
 \input{02_Inhalt/01_Vorspann/00_deckblatt.tex}
 
 % --- VORSAPNN ---
+\pagenumbering{Roman} % Römische Seitenzahlen für den Vorspann
 \include{02_Inhalt/01_Vorspann/01_abstract}
 \input{02_Inhalt/01_Vorspann/02_verzeichnisse.tex}
 
+% --- GLOSSAR & ABKÜRZUNGSVERZEICHNIS AUSGEBEN ---
+\printglossary[type=\acronymtype, title={Abkürzungsverzeichnis}]
+\printglossary[title={Glossar}]
+\newpage
+
 % --- HAUPTTEIL ---
+\pagenumbering{arabic} % Arabische Seitenzahlen für den Hauptteil
 \include{02_Inhalt/02_Hauptteil/01_vorstellung_unternehmen}
 \include{02_Inhalt/02_Hauptteil/02_projektbericht}
 \include{02_Inhalt/02_Hauptteil/03_reflexion}
@@ -33,8 +43,7 @@
 
 % --- ANHANG ---
 \appendix
-% In der Artikelklasse wird der Anhang mit \section eingeleitet
-\section{Anhang}
+\include{02_Inhalt/03_Nachspann/anhang} % \section{Anhang} ist in der Datei selbst
 
 % --- NACHSPANN ---
 \printbibliography[heading=bibintoc, title={Literaturverzeichnis}]
