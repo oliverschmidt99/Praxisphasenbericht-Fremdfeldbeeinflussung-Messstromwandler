@@ -37,7 +37,8 @@
 \usepackage{enumitem}
 \usepackage{lastpage}
 \usepackage{makeidx}
-\makeindex
+% KORRIGIERT: Vorerst auskommentiert, um den Fehler zu beheben
+% \makeindex
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=green, urlcolor=magenta, hidelinks]{hyperref}
 \usepackage{chngcntr}
 \usepackage[normalem]{ulem}
@@ -53,7 +54,6 @@
 
 % --- BENUTZERDEFINIERTE EINSTELLUNGEN ---
 \setlength{\parindent}{0em}
-% GELÖSCHT: \setkomafont{sectioning}{\sffamily} - wird jetzt in layout.tex gemacht
 
 % --- DEINE FLOAT-UMGEBUNGEN ---
 \DeclareFloatingEnvironment[listname={Diagrammverzeichnis}, name=Diagramm, fileext=lod, placement=htp]{diagram}

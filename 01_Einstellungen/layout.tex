@@ -17,18 +17,19 @@
 \usepackage{scrlayer-scrpage}
 \pagestyle{scrheadings}
 \clearpairofpagestyles
+\automark[section]{section}
 
 % Kopfzeile befüllen
+% KORRIGIERT: Der Tippfehler im Dateinamen wurde behoben (2024 statt 204)
 \ihead{\includegraphics[height=1.5cm,keepaspectratio]{03_Ressourcen/Logo/logo_rolf-janssen_2024.pdf}}
-\ohead{\Large\bfseries\praktikumstitel}
+\ohead{{\Large\bfseries\praktikumstitel} \normalfont\normalsize~|~\autorenname}
 
 % Fußzeile befüllen
-\ifoot{\leftmark}
+\ifoot{\rightmark}
 \ofoot{Seite \thepage\ von \pageref{LastPage}}
 
 % --- SCHRIFTARTEN ---
 \setkomafont{pagehead}{\kopfzeilenSchrift}
 \setkomafont{pagefoot}{\fusszeilenSchrift}
-% GEÄNDERT: Kapitel-Schriftart entfernt, da \section nicht mehr verwendet wird.
 \setkomafont{section}{\sectionSchrift}
 \setkomafont{subsection}{\subsectionSchrift}
