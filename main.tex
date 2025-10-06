@@ -32,7 +32,7 @@
 % --- GLOSSAR & ABKÜRZUNGSVERZEICHNIS AUSGEBEN ---
 \printglossary[type=\acronymtype, title={Abkürzungsverzeichnis}]
 \printglossary[title={Glossar}]
-\newpage
+\newpage\newpage
 
 % --- HAUPTTEIL ---
 \pagenumbering{arabic} % Arabische Seitenzahlen für den Hauptteil
@@ -41,12 +41,16 @@
 \include{02_Inhalt/02_Hauptteil/03_reflexion}
 \include{02_Inhalt/02_Hauptteil/04_zusammenfassung_ausblick}
 
-% ---   ---
+% --- ANHANG UND NACHSPANN ---
 \appendix
-\include{02_Inhalt/03_Nachspann/anhang} % \section{Anhang} ist in der Datei selbst
+\pagestyle{empty} % Blendet die Seitenzahlen auf den Seiten aus
 
-% --- NACHSPANN ---
-\printbibliography[heading=bibintoc, title={Literaturverzeichnis}]
+\include{02_Inhalt/03_Nachspann/anhang}
+
+% Fügt "Literaturverzeichnis" OHNE Seitenzahl ins Inhaltsverzeichnis ein
+\addsec*{Literaturverzeichnis}
+\printbibliography[title={Literaturverzeichnis}] % Gibt die Bibliographie aus
+
 \include{02_Inhalt/03_Nachspann/eigenstaendigkeitserklaerung}
 
 \end{document}
