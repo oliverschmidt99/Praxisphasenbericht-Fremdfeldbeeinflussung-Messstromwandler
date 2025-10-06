@@ -1,0 +1,26 @@
+{
+  "Einfügen: Kleines Bild": {
+    "prefix": "einfuegenBildKlein",
+    "body": [
+      "\\einfuegenBildKlein{${1:pfad/zum/bild}}{${2:Bildunterschrift}}{${3:fig:label}}",
+      "$0"
+    ],
+    "description": "Fügt eine kleine Abbildung (ca. 1/3 der Seitenbreite) ein."
+  },
+  "Einfügen: Mittleres Bild": {
+    "prefix": "einfuegenBildMittel",
+    "body": [
+      "\\einfuegenBildMittel{${1:pfad/zum/bild}}{${2:Bildunterschrift}}{${3:fig:label}}",
+      "$0"
+    ],
+    "description": "Fügt eine mittlere Abbildung (ca. 2/3 der Seitenbreite) ein."
+  },
+  "Einfügen: Großes Bild": {
+    "prefix": "einfuegenBildGross",
+    "body": [
+      "\\einfuegenBildGross{${1:pfad/zum/bild}}{${2:Bildunterschrift}}{${3:fig:label}}",
+      "$0"
+    ],
+    "description": "Fügt eine große Abbildung (fast die ganze Seitenbreite) ein."
+  }
+}
