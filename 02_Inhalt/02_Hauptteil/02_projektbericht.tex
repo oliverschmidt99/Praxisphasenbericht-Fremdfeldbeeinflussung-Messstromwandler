@@ -7,16 +7,32 @@
 \section{Analyse der Fremdfeldbeeinflussung von Messstromwandlern}
 \label{chap:projektbericht}
 
-Im Rahmen dieser Praxisphase wird die \gls{fremdfeld}beeinflussung auf \glspl{messstromwandler} analysiert. Ziel ist es, die physikalischen Ursachen der Messabweichungen zu untersuchen und Lösungsansätze zur Minimierung dieser Störeinflüsse zu entwickeln.
+Im Rahmen dieser Praxisphase wird die \gls{fremdfeld}beeinflussung auf \glspl{messstromwandler} im \gls{niederspannung}'s-Bereich analysiert. Ziel ist es, die physikalischen Ursachen für Messabweichungen, basierend auf dem \gls{induktionsgesetz}, zu untersuchen und Lösungsansätze zur Minimierung dieser Störeinflüsse zu entwickeln.
 
 \subsection{Motivation}
 \label{sec:motivation}
-In modernen Niederspannungsschaltanlagen treffen konstruktive Anforderungen an eine hohe Leistungsdichte auf hohe Betriebsströme. Die daraus resultierende kompakte Anordnung der \glspl{sammelschiene} führt dazu, dass die starken magnetischen Wechselfelder der stromführenden Leiter auf benachbarte \glspl{messstromwandler} koppeln. Diese \gls{fremdfeld}beeinflussung ist eine signifikante Ursache für Messfehler. Besonders kritisch ist diese Kopplung für den Messwandler des mittleren Leiters (\gls{l2}), da dieser von den Feldern der beiden äußeren Phasen (\gls{l1} und \gls{l3}) umschlossen wird.
+In modernen \Glspl{niederspannungsschaltanlage} treffen konstruktive Anforderungen an eine kompakte Bauweise auf hohe Betriebsströme.\\
+Die daraus resultierende kompakte Anordnung der \glspl{sammelschiene} führt dazu, dass die starken magnetischen Wechselfelder der stromführenden Leiter auf benachbarte \glspl{messstromwandler} koppeln.\\
+Diese \gls{fremdfeld}beeinflussung ist eine signifikante Ursache für Messfehler, welche die Einhaltung der \gls{genauigkeitsklasse} gefährden kann. Besonders kritisch ist diese Kopplung für den Wandler der mittleren Phase \acrshort{l2}, da dieser von den Feldern der beiden äußeren Phasen \acrshort{l1} und \acrshort{l3} beeinflusst wird.
+
+
 
 \subsection{Vorgehen}
 \label{sec:vorgehen}
-Wie bist du methodisch vorgegangen? Welche Schritte hast du unternommen?
+Das methodische Vorgehen gliedert sich in zwei zentrale Phasen: Zuerst wurde eine theoretische Analyse mittels Simulation durchgeführt, um die zu erwartenden Effekte der \gls{fremdfeld}beeinflussung zu quantifizieren. Anschließend wurden diese Simulationsergebnisse durch eine experimentelle Untersuchung an einem realen Aufbau validiert. Als praxisnaher Aufbau diente hierfür ein \gls{erwaermungspruefstand}, der die notwendigen hohen Betriebsströme bereitstellen kann.
+
+\subsubsection{Simulation}
+\label{sec:vorgehen:simulation}
+Für die theoretische Untersuchung wurde ein 2D-Modell der Anordnung in der Software \gls{femm} erstellt. Das Modell bildete einen typischen Aufbau von drei parallelen \glspl{sammelschiene} für die Phasen \acrshort{l1}, \acrshort{l2} und \acrshort{l3} sowie den zu untersuchenden \gls{messstromwandler} ab. Besonderes Augenmerk wurde auf die realitätsgetreue Modellierung der geometrischen Abmessungen, der relativen Positionen und der magnetischen Eigenschaften des Wandlerkerns gelegt.
+
+%In der Simulation wurde der mittlere Leiter \acrshort{l2} als Messphase betrachtet, während die äußeren Leiter \acrshort{l1} und \acrshort{l3} als Störquellen dienten. Es wurden verschiedene Lastfälle mit symmetrischen und unsymmetrischen Strömen simuliert, um die magnetische Feldverteilung und den daraus resultierenden Fehlfluss im Kern des Messwandlers zu berechnen. Ziel war es, den zu erwartenden Messfehler als Funktion des Leiterabstands und der Stromstärke der Störphasen zu ermitteln.
+
+\subsubsection{Messung}
+\label{sec:vorgehen:messung}
+Die praktische Verifizierung der Simulationsergebnisse erfolgte am \gls{erwaermungspruefstand}. Dort wurde der zuvor simulierte Aufbau mit realen \glspl{sammelschiene} und einem Referenz-\gls{messstromwandler} nachgebildet. Mithilfe des Prüfstandes wurden hohe Ströme von bis zu mehreren Kiloampere durch die Leiter geschickt.
+
+Als Referenz für die exakte Stromstärke diente ein hochpräziser Rogowski-Wandler, dessen Messsignal unempfindlich gegenüber externen Magnetfeldern ist. Das Ausgangssignal des zu testenden Wandlers wurde parallel dazu erfasst. Durch den Vergleich der beiden Messsignale konnte die tatsächliche Messabweichung unter dem Einfluss der \glspl{fremdfeld} der benachbarten Phasen präzise bestimmt werden. Die Messungen wurden für verschiedene Stromstärken und Leiterabstände wiederholt, um eine breite Datenbasis für den Vergleich mit der Simulation zu schaffen.
+
 
 \subsection{Ergebnisse}
 \label{sec:ergebnisse}
-Was sind die konkreten Ergebnisse deiner Arbeit?
