@@ -22,5 +22,85 @@
       "$0"
     ],
     "description": "Fügt eine große Abbildung (fast die ganze Seitenbreite) ein."
+  },
+  "Einfügen: Standard-Abbildung": {
+    "prefix": "fig",
+    "body": [
+      "\\begin{figure}[htbp]",
+      "  \\centering",
+      "  \\includegraphics[width=0.8\\textwidth]{${1:pfad/zum/bild}}",
+      "  \\caption{${2:Bildunterschrift}}",
+      "  \\label{fig:${3:label}}",
+      "\\end{figure}",
+      "$0"
+    ],
+    "description": "Fügt eine Standard-Abbildungsumgebung ein."
+  },
+  "Einfügen: Formel (nummeriert)": {
+    "prefix": "eqn",
+    "body": [
+      "\\begin{equation}",
+      "  ${1:E = mc^2}",
+      "  \\label{eq:${2:label}}",
+      "\\end{equation}",
+      "$0"
+    ],
+    "description": "Fügt eine nummerierte Formel-Umgebung ein."
+  },
+  "Einfügen: Formel (mehrzeilig, ausgerichtet)": {
+    "prefix": "align",
+    "body": [
+      "\\begin{align}",
+      "  ${1:a} &= ${2:b+c} \\\\",
+      "  ${3:d} &= ${4:e-f}",
+      "  \\label{eq:${5:label}}",
+      "\\end{align}",
+      "$0"
+    ],
+    "description": "Fügt eine mehrzeilige, am =-Zeichen ausgerichtete Formel ein."
+  },
+  "Einfügen: Tabelle": {
+    "prefix": "tab",
+    "body": [
+      "\\begin{table}[htbp]",
+      "  \\centering",
+      "  \\caption{${1:Tabellenüberschrift}}",
+      "  \\label{tab:${2:label}}",
+      "  \\begin{tabular}{${3:|c|c|}}",
+      "    \\hline",
+      "    ${4:Spalte 1} & ${5:Spalte 2} \\\\",
+      "    \\hline",
+      "    ${6:Zeile 1, Zelle 1} & ${7:Zeile 1, Zelle 2} \\\\",
+      "    ${8:Zeile 2, Zelle 1} & ${9:Zeile 2, Zelle 2} \\\\",
+      "    \\hline",
+      "  \\end{tabular}",
+      "\\end{table}",
+      "$0"
+    ],
+    "description": "Fügt eine einfache Tabellenumgebung ein."
+  },
+  "Einfügen: Quellcode": {
+    "prefix": "code",
+    "body": [
+      "\\begin{lstlisting}[language=${1:Python}, caption=${2:Quellcode-Beschreibung}, label=lst:${3:label}]",
+      "${4:# Dein Code hier}",
+      "\\end{lstlisting}",
+      "$0"
+    ],
+    "description": "Fügt eine Quellcode-Umgebung (listings package) ein."
+  },
+  "Projekt: Hilfsdateien löschen (Linux/macOS)": {
+    "prefix": "latexCleanLinux",
+    "body": [
+      "rm -f *.aux *.bbl *.blg *.log *.lof *.lot *.out *.toc *.synctex.gz *.fls *.fdb_latexmk"
+    ],
+    "description": "Terminal-Befehl zum Löschen von LaTeX-Hilfsdateien für Linux/macOS."
+  },
+  "Projekt: Hilfsdateien löschen (Windows)": {
+    "prefix": "latexCleanWindows",
+    "body": [
+      "del /F /Q *.aux *.bbl *.blg *.log *.lof *.lot *.out *.toc *.synctex.gz *.fls *.fdb_latexmk"
+    ],
+    "description": "CMD-Befehl zum Löschen von LaTeX-Hilfsdateien für Windows."
   }
 }

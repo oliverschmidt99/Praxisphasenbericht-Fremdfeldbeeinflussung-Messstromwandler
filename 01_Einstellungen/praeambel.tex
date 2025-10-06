@@ -11,10 +11,6 @@
 \usepackage{graphicx}
 \usepackage{csquotes}
 
-% --- LAYOUT-DATEI LADEN ---
-\input{01_Einstellungen/layout.tex}
-
-
 % --- LITERATURVERZEICHNIS (BIBLATEX) ---
 \usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
 
@@ -36,12 +32,12 @@
 
 % --- SONSTIGE PAKETE ---
 \usepackage{enumitem}
-\usepackage{lastpage}
 \usepackage{makeidx}
 % \makeindex % Vorerst auskommentiert
+\usepackage{totpages} % Robustes Paket für Gesamtseitenzahl
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=green, urlcolor=magenta, hidelinks]{hyperref}
-\usepackage[acronym, nonumberlist, toc, section]{glossaries} % NEU: Paket für Glossar und Abkürzungen
-\makeglossaries                                     % NEU: Befehl, um die Verzeichnisse zu erstellen
+\usepackage[acronym, nonumberlist, toc, section]{glossaries}
+\makeglossaries
 \usepackage{chngcntr}
 \usepackage[normalem]{ulem}
 \usepackage{calc}
@@ -52,6 +48,9 @@
 \usepackage[most]{tcolorbox}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{etoolbox}
+
+% --- LAYOUT-DATEI LADEN ---
+
 
 % --- BENUTZERDEFINIERTE EINSTELLUNGEN ---
 \setlength{\parindent}{0em}

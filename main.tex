@@ -2,8 +2,7 @@
 % HAUPTDOKUMENT (main.tex)
 % =============================================================================
 
-% GEÄNDERT: 'footsepline=0.4pt' hinzugefügt
-\documentclass[11pt, a4paper, headsepline=0.4pt, footsepline=0.4pt]{scrartcl}
+\documentclass[11pt, a4paper]{scrartcl}
 
 % --- EINSTELLUNGEN LADEN ---
 \input{01_Einstellungen/praeambel.tex}
@@ -13,7 +12,6 @@
 \addbibresource{bibliographie.bib}
 
 % --- DEFINITIONEN FÜR GLOSSAR LADEN ---
-% HINWEIS: Dieser Input-Befehl muss vor \begin{document} stehen!
 \input{02_Inhalt/01_Vorspann/03_abkuerzungen_glossar.tex}
 
 % -----------------------------------------------------------------------------
@@ -24,33 +22,55 @@
 % Deckblatt wird als unnummerierte Titelseite eingefügt
 \input{02_Inhalt/01_Vorspann/00_deckblatt.tex}
 
+
 % --- VORSAPNN ---
+\clearpage
 \pagenumbering{Roman} % Römische Seitenzahlen für den Vorspann
-\include{02_Inhalt/01_Vorspann/01_abstract}
+
+\input{02_Inhalt/01_Vorspann/01_zusammenfassung.tex}
+\newpage
 \input{02_Inhalt/01_Vorspann/02_verzeichnisse.tex}
 
-% --- GLOSSAR & ABKÜRZUNGSVERZEICHNIS AUSGEBEN ---
 \printglossary[type=\acronymtype, title={Abkürzungsverzeichnis}]
+\clearpage
 \printglossary[title={Glossar}]
-\newpage\newpage
+
 
 % --- HAUPTTEIL ---
+\clearpage
 \pagenumbering{arabic} % Arabische Seitenzahlen für den Hauptteil
-\include{02_Inhalt/02_Hauptteil/01_vorstellung_unternehmen}
-\include{02_Inhalt/02_Hauptteil/02_projektbericht}
-\include{02_Inhalt/02_Hauptteil/03_reflexion}
-\include{02_Inhalt/02_Hauptteil/04_zusammenfassung_ausblick}
+
+\input{02_Inhalt/02_Hauptteil/01_vorstellung_unternehmen.tex}
+\clearpage
+\input{02_Inhalt/02_Hauptteil/02_projektbericht.tex}
+\clearpage
+\input{02_Inhalt/02_Hauptteil/03_reflexion.tex}
+\clearpage
+\input{02_Inhalt/02_Hauptteil/04_zusammenfassung_ausblick.tex}
+
 
 % --- ANHANG UND NACHSPANN ---
+\clearpage
 \appendix
 \pagestyle{empty} % Blendet die Seitenzahlen auf den Seiten aus
 
-\include{02_Inhalt/03_Nachspann/anhang}
+% Der \appendix-Befehl sorgt dafür, dass jede \section
+% automatisch als "Anhang A", "Anhang B" etc. formatiert wird.
+\section{Zusätzliche Messdaten und Grafiken}
+\label{sec:anhang_a}
 
+% Hier kannst du den Inhalt deines Anhangs einfügen,
+% z.B. Tabellen, große Grafiken oder Messprotokolle.
+%
+% \blindtext % Nur ein Platzhalter, kannst du entfernen.
+
+
+\clearpage
 % Fügt "Literaturverzeichnis" OHNE Seitenzahl ins Inhaltsverzeichnis ein
 \addsec*{Literaturverzeichnis}
-\printbibliography[title={Literaturverzeichnis}] % Gibt die Bibliographie aus
+\printbibliography[title={Literaturverzeichnis}]
+\clearpage
 
-\include{02_Inhalt/03_Nachspann/eigenstaendigkeitserklaerung}
+\input{02_Inhalt/03_Nachspann/eigenstaendigkeitserklaerung.tex}
 
 \end{document}
