@@ -2,35 +2,35 @@
 % KAPITEL 2: PROJEKTBERICHT
 % -----------------------------------------------------------------------------
 % Das Kernstück deines Berichts. Hier beschreibst du dein Projekt.
+% HINWEIS: Die \gls- und \acr-Befehle erzeugen automatisch die Links im PDF.
 % =============================================================================
 
 \section{Analyse der Fremdfeldbeeinflussung von Messstromwandlern}
 \label{chap:projektbericht}
 
-Im Rahmen dieser Praxisphase wird die \gls{fremdfeld}beeinflussung auf \glspl{messstromwandler} im \gls{niederspannung}'s-Bereich analysiert. Ziel ist es, die physikalischen Ursachen für Messabweichungen, basierend auf dem \gls{induktionsgesetz}, zu untersuchen und Lösungsansätze zur Minimierung dieser Störeinflüsse zu entwickeln.
+Im Rahmen dieser Praxisphase wird die \gls{fremdfeld}beeinflussung auf \glspl{messstromwandler} im Bereich der \gls{niederspannung} analysiert. Ziel ist es, die physikalischen Ursachen für Messabweichungen, basierend auf dem \gls{induktionsgesetz}, zu untersuchen und Lösungsansätze zur Minimierung dieser Störeinflüsse zu entwickeln.
 
 \subsection{Motivation}
 \label{sec:motivation}
 
-In modernen \Glspl{niederspannungsschaltanlage} treffen konstruktive Anforderungen an eine kompakte Bauweise auf hohe Betriebsströme. Die daraus resultierende kompakte Anordnung der \glspl{sammelschiene} führt dazu, dass die starken magnetischen Wechselfelder der stromführenden \glspl{leiter} auf benachbarte \glspl{messstromwandler} koppeln. Diese \gls{fremdfeld}beeinflussung ist eine signifikante Ursache für Messfehler, welche die Einhaltung der \gls{genauigkeitsklasse} beeinträchtigen kann und somit für verrechnungszwecke nicht mehr geeignet ist. Besonders kritisch ist diese Kopplung für den Wandler der mittleren Phase \acrshort{l2}, da dieser von den Feldern der beiden äußeren Phasen \acrshort{l1} und \acrshort{l3} beeinflusst wird.
-
+In modernen \Glspl{niederspannungsschaltanlage} treffen konstruktive Anforderungen an eine kompakte Bauweise auf hohe Betriebsströme. Die daraus resultierende kompakte Anordnung der \glspl{sammelschiene} führt dazu, dass die starken magnetischen Wechselfelder der stromführenden \glspl{leiter} auf benachbarte \glspl{messstromwandler} koppeln. Diese \gls{fremdfeld}beeinflussung ist eine signifikante Ursache für Messfehler, welche die Einhaltung der \gls{genauigkeitsklasse} beeinträchtigen kann und somit für Verrechnungszwecke nicht mehr geeignet ist. Besonders kritisch ist diese Kopplung für den Wandler der mittleren Phase \acrshort{l2}, da dieser von den Feldern der beiden äußeren Phasen \acrshort{l1} und \acrshort{l3} beeinflusst wird.
 
 \subsection{Vorgehen}
 \label{sec:vorgehen}
 
-Um die Beeinflussung der Magnetfelder zu verstehen wurde eine Simulationssoftware verwendet. Mit der Open-Source Software \glspl{femm} lassen sich verschiedene Elektrotechnische Probleme simulieren.
+Um die gegenseitige Beeinflussung der Magnetfelder zu untersuchen, wurde die Open-Source-Software \gls{femm} eingesetzt. Mit dieser lassen sich verschiedene elektrotechnische Problemstellungen wie magnetische, elektrostatische, stromfluss oder thermische Phänomene simulieren. Da die Software jedoch ausschließlich \glspl{stationaer} Probleme in zwei Dimensionen berechnen kann, wurde für die Analyse der \gls{magnetfeldeinkopplung} in die \glspl{messstromwandler} eine ergänzende Software zur Simulation dynamischer Vorgänge entwickelt.
+
+Die messtechnische Untersuchung der \glspl{messstromwandler} findet im \gls{erwaermungspruefstand} statt. Sie gliedert sich in zwei Bereiche: Zuerst werden die \glspl{interne-parameter} mittels \gls{acv-verfahren}- und \gls{dcv-verfahren}-Messungen ermittelt. Anschließend erfolgt die \gls{genauigkeitsmessung} unter Betriebsbedingungen mit den jeweiligen \glspl{nennstrom} der Wandler.
 
 \subsubsection{Simulation}
 \label{sec:vorgehen:simulation}
-Für die theoretische Untersuchung wurde ein 2D-Modell der Anordnung in der Software \gls{femm} erstellt. Das Modell bildete einen typischen Aufbau von drei parallelen \glspl{sammelschiene} für die Phasen \acrshort{l1}, \acrshort{l2} und \acrshort{l3} sowie den zu untersuchenden \gls{messstromwandler} ab. Besonderes Augenmerk wurde auf die realitätsgetreue Modellierung der geometrischen Abmessungen, der relativen Positionen und der magnetischen Eigenschaften des Wandlerkerns gelegt.
+
 
 
 \subsubsection{Messung}
 \label{sec:vorgehen:messung}
-Die praktische Verifizierung der Simulationsergebnisse erfolgte am \gls{erwaermungspruefstand}. Dort wurde der zuvor simulierte Aufbau mit realen \glspl{sammelschiene} und einem Referenz-\gls{messstromwandler} nachgebildet. Mithilfe des Prüfstandes wurden hohe Ströme von bis zu mehreren Kiloampere durch die Leiter geschickt.
-
-Als Referenz für die exakte Stromstärke diente ein hochpräziser Rogowski-Wandler, dessen Messsignal unempfindlich gegenüber externen Magnetfeldern ist. Das Ausgangssignal des zu testenden Wandlers wurde parallel dazu erfasst. Durch den Vergleich der beiden Messsignale konnte die tatsächliche Messabweichung unter dem Einfluss der \glspl{fremdfeld} der benachbarten Phasen präzise bestimmt werden. Die Messungen wurden für verschiedene Stromstärken und Leiterabstände wiederholt, um eine breite Datenbasis für den Vergleich mit der Simulation zu schaffen.
-
+% Hier Inhalt einfügen
 
 \subsection{Ergebnisse}
 \label{sec:ergebnisse}
+% Hier Inhalt einfügen

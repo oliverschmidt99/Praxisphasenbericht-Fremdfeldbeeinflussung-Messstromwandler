@@ -2,20 +2,31 @@
 % ABKÜRZUNGSVERZEICHNIS UND GLOSSAR
 % -----------------------------------------------------------------------------
 % Zentrale Definitionsdatei für alle Abkürzungen und Fachbegriffe.
+% Stand: 17.10.2025
 % =============================================================================
 
 % --- ABKÜRZUNGEN DEFINIEREN ---
+
+% Phasen
 \newacronym{l1}{L1}{Phase L1}
 \newacronym{l2}{L2}{Phase L2}
 \newacronym{l3}{L3}{Phase L3}
-\newacronym{emv}{EMV}{Elektromagnetische Verträglichkeit}
-% --- NEUE ABKÜRZUNGEN ---
-\newacronym{ac}{AC}{Alternating Current (Wechselstrom)}
-\newacronym{dc}{DC}{Direct Current (Gleichstrom)}
+
+% Organisationen und Normen
 \newacronym{vde}{VDE}{Verband der Elektrotechnik, Elektronik und Informationstechnik}
+
+% Technische Begriffe
+\newacronym{emv}{EMV}{Elektromagnetische Verträglichkeit}
 \newacronym{sps}{SPS}{Speicherprogrammierbare Steuerung}
+\newacronym{fem}{FEM}{Finite-Elemente-Methode}
+\newacronym{in}{I\textsubscript{N}}{Nennstrom}
+
+% Messverfahren (angepasste, präzisere Definition)
+\newacronym{acv}{ACV}{Wechselstrom-Messverfahren (engl. Alternating Current Verfahren)}
+\newacronym{dcv}{DCV}{Gleichstrom-Messverfahren (engl. Direct Current Verfahren)}
 
 % --- FACHBEGRIFFE FÜRS GLOSSAR DEFINIEREN ---
+
 \newglossaryentry{sammelschiene}{
     name={Sammelschiene},
     plural={Sammelschienen},
@@ -64,10 +75,10 @@
     description={Eine Anlage zur Verteilung elektrischer Energie im Bereich der Niederspannung. Sie kombiniert Schaltgeräte zum Verbinden und Trennen von Stromkreisen mit Schutz- und Messeinrichtungen wie Sicherungen und Messstromwandlern.}
 }
 
-\newglossaryentry{femm}{
-    name={FEMM},
-    plural={FEMM},
-    description={Finite Element Method Magnetics. Eine quelloffene Software zur Simulation von 2D- und achsensymmetrischen Problemen der Elektrostatik und Magnetostatik. Sie wird häufig in der Elektrotechnik zur Analyse von magnetischen Feldern in Geräten wie Transformatoren, Motoren und auch zur Untersuchung von Fremdfeldeinflüssen eingesetzt.}
+\newglossaryentry{leiter}{
+    name={Leiter},
+    plural={Leiter},
+    description={Ein elektrisch leitendes Material, das dazu dient, elektrischen Strom zu führen. In Schaltanlagen sind dies typischerweise \glspl{sammelschiene} oder Kabel.}
 }
 
 \newglossaryentry{erwaermungspruefstand}{
@@ -76,8 +87,50 @@
     description={Ein spezieller Prüfaufbau zur Verifizierung des thermischen Verhaltens von Schaltanlagen nach \acrshort{vde}-Norm. Mittels eines regelbaren Hochstromtransformators wird der Nenn- oder Überlaststrom bei sehr geringer Spannung (typischerweise unter 10 V) in die Hauptstrombahnen eingespeist. Dies simuliert die reale Wärmeverlustleistung (I²R) im Betrieb und ermöglicht die Überprüfung, ob die entstehende Wärme zuverlässig abgeführt wird und keine unzulässig hohen Temperaturen an Komponenten wie \glspl{sammelschiene} oder Schaltgeräten auftreten.}
 }
 
-\newglossaryentry{leiter}{
-    name={Leiter},
-    plural={Leiter},
-    description={Ein elektrisch leitendes Material, das dazu dient, elektrischen Strom zu führen. In Schaltanlagen sind dies typischerweise \glspl{sammelschiene} oder Kabel.}
+% --- NEU HINZUGEFÜGTE GLOSSAREINTRÄGE ---
+
+\newglossaryentry{femm}{
+    name={FEMM},
+    plural={FEMM},
+    description={Finite Element Method Magnetics. Eine quelloffene Software zur Simulation von 2D- und achsensymmetrischen Problemen der Elektrostatik und Magnetostatik. Sie wird häufig in der Elektrotechnik zur Analyse von magnetischen Feldern in Geräten wie Transformatoren oder Motoren eingesetzt.}
+}
+
+\newglossaryentry{stationaer}{
+    name={Stationäres Problem},
+    plural={Stationäre Probleme},
+    description={Ein Systemzustand, bei dem die betrachteten physikalischen Größen (z.B. Ströme, Felder) zeitlich konstant sind. Dies ist typisch für Gleichstrom-Anwendungen (DC). \gls{femm} ist primär auf die Lösung solcher Probleme ausgelegt.}
+}
+
+\newglossaryentry{magnetfeldeinkopplung}{
+    name={Magnetfeldeinkopplung},
+    plural={Magnetfeldeinkopplungen},
+    description={Ein Phänomen, bei dem ein zeitlich veränderliches Magnetfeld einer externen Quelle (z.B. ein benachbarter \gls{leiter}) eine Spannung in einer Leiterschleife (z.B. der Sekundärwicklung eines \gls{messstromwandler}) induziert. Diese Einkopplung ist eine Form der elektromagnetischen Störung und kann die Messgenauigkeit beeinträchtigen.}
+}
+
+\newglossaryentry{interne-parameter}{
+    name={Interne Parameter},
+    plural={Interne Parameter},
+    description={Die elektrischen Ersatzgrößen, die das reale Verhalten eines Bauteils wie eines \gls{messstromwandler} beschreiben. Dazu zählen primär der ohmsche Wicklungswiderstand sowie die Haupt- und Streuinduktivitäten.}
+}
+
+\newglossaryentry{nennstrom}{
+    name={Nennstrom},
+    plural={Nennströme},
+    description={Der vom Hersteller festgelegte Wert des Primärstroms (\acrshort{in}), für den ein \gls{messstromwandler} ausgelegt ist und bei dem er seine spezifizierte \gls{genauigkeitsklasse} einhält.}
+}
+
+\newglossaryentry{genauigkeitsmessung}{
+    name={Genauigkeitsmessung},
+    plural={Genauigkeitsmessungen},
+    description={Ein normiertes Messverfahren zur Überprüfung der Genauigkeit von Messwandlern. Dabei werden der Übersetzungsfehler (Amplitudenfehler) und der Winkelfehler (Phasenfehler) bei definierten Anteilen des \gls{nennstrom} bestimmt und mit den Grenzwerten der \gls{genauigkeitsklasse} verglichen.}
+}
+
+\newglossaryentry{acv-verfahren}{
+    name={ACV-Messverfahren},
+    description={Ein Messverfahren, das Wechselspannung und -strom nutzt, um frequenzabhängige Eigenschaften eines Bauteils zu bestimmen. Bei \glspl{messstromwandler} dient es typischerweise zur Ermittlung von Induktivitäten und Eisenverlusten.}
+}
+
+\newglossaryentry{dcv-verfahren}{
+    name={DCV-Messverfahren},
+    description={Ein Messverfahren, das Gleichspannung und -strom verwendet, um rein ohmsche Widerstände zu messen. Bei einem \gls{messstromwandler} wird es zur präzisen Bestimmung des Kupferwiderstandes der Sekundärwicklung eingesetzt.}
 }
