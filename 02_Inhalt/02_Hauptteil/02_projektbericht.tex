@@ -22,9 +22,48 @@ Um die gegenseitige Beeinflussung der Magnetfelder zu untersuchen, wurde die Ope
 
 Die messtechnische Untersuchung der \glspl{messstromwandler} findet im \gls{erwaermungspruefstand} statt. Sie gliedert sich in zwei Bereiche: Zuerst werden die \glspl{interne-parameter} mittels \gls{acv-verfahren}- und \gls{dcv-verfahren}-Messungen ermittelt. Anschließend erfolgt die \gls{genauigkeitsmessung} unter Betriebsbedingungen mit den jeweiligen \glspl{nennstrom} der Wandler.
 
+\subsubsection{Vorbereitung}
+\label{sec:vorgehen:vorbereitung}
+
+Zur Vorbereitung der messtechnischen und simulativen Untersuchungen wurden im Vorfeld \glspl{messstromwandler} verschiedener Hersteller mit unterschiedlichen \glspl{nennstrom} beschafft.
+
+Parallel dazu erfolgte eine umfassende Einarbeitung in die theoretischen Grundlagen der Messwandlertechnik und der \gls{fremdfeld}problematik. Dies umfasste die Recherche und Analyse relevanter wissenschaftlicher Artikel (Paper) und Fachbücher. Ergänzend wurden erste analytische Berechnungen zur \gls{magnetfeldeinkopplung} mittels \gls{matlab}  durchgeführt.
+
 \subsubsection{Simulation}
 \label{sec:vorgehen:simulation}
 
+
+Für die Simulation wurden verschiedene Ansätze verfolgt. Zunächst wurde ein
+Matlab-Skript implementiert, das die Magnetfelder auf Basis des
+Biot-Savart-Gesetzes berechnet. Es zeigte sich jedoch schnell, dass dieser
+Ansatz die Realität nur unzureichend abbildete. Aus diesem Grund musste eine alternative Methode gewählt werden.
+
+Im Zuge einer intensiven Recherche nach einer geeigneten kostenlosen Open-Source-Software für Magnetfeldsimulationen wurde „FEMM“ (Finite Element Method Magnetics) als passende Lösung gefunden.
+
+FEMM (Finite Element Method Magnetics) ist ein Programm, das magnetische Probleme mithilfe der Finiten-Elemente-Methode (FEM) löst.
+
+Der entscheidende Vorteil gegenüber dem zuvor genutzten Biot-Savart-Gesetz liegt darin, dass FEMM nicht nur Leitergeometrien, sondern auch die nichtlinearen Materialeigenschaften (wie die B(H)-Kennlinie bzw. die magnetische Sättigung) von ferromagnetischen Werkstoffen berücksichtigen kann.
+
+Genau diese Materialeigenschaften wurden beim reinen Biot-Savart-Ansatz vernachlässigt, was zu den Abweichungen von der Realität führte. Für die weitere Simulation wurde das Modell daher in FEMM neu aufgebaut, um die Sättigungseffekte realitätsnah abzubilden.
+
+
+\textbf{FEMM (Finite Element Method Magnetics)}
+
+FEMM ist eine Programmsuite zur Lösung niederfrequenter elektromagnetischer Probleme in zweidimensionalen planaren und achsensymmetrischen Gebieten. Das Programm behandelt derzeit linear/nichtlineare magnetostatische Probleme, linear/nichtlineare zeitharmonische magnetische Probleme, lineare elektrostatische Probleme und stationäre Wärmeflussprobleme.
+
+FEMM ist in drei Teile gegliedert:
+
+\begin{itemize}
+    \item \textbf{Interaktive Shell (\texttt{femm.exe}):} Dieses Programm ist ein Multiple Document Interface Pre- und Postprozessor für die verschiedenen Problemtypen, die von FEMM gelöst werden[cite: 28]. Es enthält eine CAD-ähnliche Oberfläche zum Anlegen der Problemgeometrie sowie zur Definition von Materialeigenschaften und Randbedingungen[cite: 29]. Autocad DXF-Dateien können importiert werden, um die Analyse bestehender Geometrien zu erleichtern[cite: 30]. Feldlösungen können in Form von Kontur- und Dichtediagrammen dargestellt werden[cite: 31]. Das Programm erlaubt es dem Benutzer auch, das Feld an beliebigen Punkten zu untersuchen sowie verschiedene Integrale zu berechnen und Grö\ss en entlang benutzerdefinierter Konturen darzustellen[cite: 32].
+
+    \item \textbf{\texttt{triangle.exe}:} Triangle zerlegt das Lösungsgebiet in eine gro\ss e Anzahl von Dreiecken, ein wichtiger Teil des Finite-Elemente-Prozesses. Dieses Programm wurde von Jonathan Shewchuk geschrieben[cite: 34].
+
+    \item \textbf{Solver:} Separate Solver existieren für verschiedene Problemtypen: \texttt{fkern.exe} für Magnetik, \texttt{belasolv} für Elektrostatik, \texttt{hsolv} für Wärmeflussprobleme und \texttt{csolv} für Stromflussprobleme. Jeder Solver nimmt Datendateien entgegen, die das Problem beschreiben, und löst die relevanten partiellen Differentialgleichungen, um Werte für das gewünschte Feld im gesamten Lösungsgebiet zu erhalten[cite: 36].
+\end{itemize}
+
+Die Skriptsprache Lua ist in die interaktive Shell integriert[cite: 37]. Eine einzige Instanz von Lua kann sowohl eine Geometrie aufbauen und analysieren als auch die Postprocessing-Ergebnisse auswerten, was die Erstellung verschiedener Arten von "Batch"-Läufen vereinfacht[cite: 39]. Zusätzlich werden alle Eingabefelder in der Benutzeroberfläche von Lua geparst, was die Eingabe von Gleichungen oder mathematischen Ausdrücken anstelle von numerischen Werten ermöglicht[cite: 40]. In jedem Eingabefeld in FEMM kann ein ausgewähltes Textstück über einen Eintrag im Kontextmenü der rechten Maustaste von Lua ausgewertet werden[cite: 41].
+
+Der Zweck dieses Dokuments ist es, eine kurze Erklärung der von FEMM gelösten Problemarten zu geben und eine ziemlich detaillierte Dokumentation der Programmnutzung bereitzustellen[cite: 42].
 
 
 \subsubsection{Messung}
@@ -34,3 +73,9 @@ Die messtechnische Untersuchung der \glspl{messstromwandler} findet im \gls{erwa
 \subsection{Ergebnisse}
 \label{sec:ergebnisse}
 % Hier Inhalt einfügen
+
+In der Abbildung \ref{fig:simulation_aufbau} kann man den groben Aufbau der Simulation betrachten, welcher sich in drei Kategorien gliedert einmal in erstellung der Bauteile, erstellung der Simulation und die Visuelle darstellung der Ergebinsse aus der Simulation.
+
+
+\einfuegenBildGross{04_Zeichnungen/verlauf_femm.png}{Aufbau der Simulation}{fig:simulation_aufbau}
+
