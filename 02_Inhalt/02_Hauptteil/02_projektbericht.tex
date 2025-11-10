@@ -29,7 +29,7 @@ Zur Vorbereitung der messtechnischen und simulativen Untersuchungen wurden im Vo
 
 Parallel dazu erfolgte eine umfassende Einarbeitung in die theoretischen Grundlagen der Messwandlertechnik und der \gls{fremdfeld}problematik. Dies umfasste die Recherche und Analyse relevanter wissenschaftlicher Artikel (Paper) und Fachbücher. Ergänzend wurden erste analytische Berechnungen zur \gls{magnetfeldeinkopplung} mittels \gls{matlab}  durchgeführt.
 
-\subsubsection{Simulation}
+\subsection{Simulation}
 \label{sec:vorgehen:simulation}
 
 Für die Simulation wurden verschiedene Ansätze verfolgt. Zunächst kam ein in Matlab implementiertes Skript zum Einsatz, das die Magnetfelder auf Grundlage des Biot-Savart-Gesetzes berechnet. Schnell zeigte sich jedoch, dass dieser Ansatz die physikalische Realität nur unzureichend abbildet. Daher wurde eine alternative Methode erforderlich.
@@ -66,11 +66,49 @@ Der detaillierte Modellaufbau in FEMM erfolgte in einem zweidimensionalen Quersc
 
 
 
-\subsubsection{Messung}
+\subsection{Messung}
 \label{sec:vorgehen:messung}
-% Hier Inhalt einfügen
 
-Im weitern Verlauf mussten die Wandler einer Realenmessung unterzogen werden.
+Bei der Messung am Erwärmungsprüfstand sollen die Messstromwandler in verschiedenen geometrischen Anordnungen auf Genauigkeit gemessen werden. Die Anordnung der Kupferschienen muss für die Messungen speziell angefertigt werden, dadurch lassen sich die Messstromwandler möglichst einfach und schnell in den verschiedenen Positionen messen.
+
+Für die Messungen der Wandler muss die DIN-Norm 61869-2 eingehalten werden. Die entsprechenden Grenzwerte für die Übersetzungsmessabweichung sind in Tabelle~\ref{tab:grenzwerte_wandler_reduziert} dargestellt.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Grenzwerte für Übersetzungsmessabweichung für Stromwandler für Messzwecke (Klassen 0,1 bis 1) nach DIN EN 61869-2}
+    \label{tab:grenzwerte_wandler_reduziert}
+    \begin{tabular}{lcccc}
+        \toprule
+        \multirow{3}{*}{\textbf{Genauigkeitsklasse}} & \multicolumn{4}{c}{\textbf{Übersetzungsmessabweichung}}                            \\
+                                                     & \multicolumn{4}{c}{$\pm \%$ bei Strom (\% von Bemessungsstrom)}                    \\
+        \cmidrule(lr){2-5}
+                                                     & 5                                                               & 20   & 100 & 120 \\
+        \midrule
+        0,1                                          & 0,4                                                             & 0,2  & 0,1 & 0,1 \\
+        0,2                                          & 0,75                                                            & 0,35 & 0,2 & 0,2 \\
+        0,5                                          & 1,5                                                             & 0,75 & 0,5 & 0,5 \\
+        1                                            & 3,0                                                             & 1,5  & 1,0 & 1,0 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
+
+\subsubsection{Messaufbau}
+\label{sec:vorgehen:messung:messaufbau}
+
+In der Abbildung \ref{fig:erwaermungspruefstand_mit_wandler} kann man die spezialisierte Kupferschienensystem sehen, es können zwei verschiedne Phasenmittelabstände simuliert werden. Ein Phasenmittelabstand ist der Abstand zwischen den Außleitern, dieser Abstand entsteht durch den Hauptschalter an dennen die Kupferschienen befestigt werden.
+
+Links im Bild ist das Schienensystem für Ströme von 600 A bis 1250 A mit einem Phasenabstand von 70 mm und Rechts im Bild ist das Schienensystem für 630 A bis 3200 A und das Schienesystem für 3200 A bis 5000 A ist nicht im Bild zusehen, da es dafür extra verbaut werden muss und der Phasenmittelabstand beträgt 210 mm.
+
+
+
+
+\einfuegenBildGross{03_Ressourcen/Bilder/erwaermungspruefstand_abgang_ohne_wandler.png}{Messaufbau des Erwärmungsprüfstands mit Messstromwandler}{fig:erwaermungspruefstand_mit_wandler}
+
+
+
 
 
 \subsection{Ergebnisse}
