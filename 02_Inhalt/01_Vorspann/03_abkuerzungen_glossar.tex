@@ -2,7 +2,7 @@
 % ABKÜRZUNGSVERZEICHNIS UND GLOSSAR
 % -----------------------------------------------------------------------------
 % Zentrale Definitionsdatei für alle Abkürzungen und Fachbegriffe.
-% Stand: 17.10.2025
+% Stand: 11.11.2025 (Bereinigt)
 % =============================================================================
 
 % --- ABKÜRZUNGEN DEFINIEREN ---
@@ -25,24 +25,24 @@
 \newacronym{acv}{ACV}{Wechselstrom-Messverfahren (engl. Alternating Current Verfahren)}
 \newacronym{dcv}{DCV}{Gleichstrom-Messverfahren (engl. Direct Current Verfahren)}
 
-% --- FACHBEGRIFFE FÜRS GLOSSAR DEFINIEREN ---
+% =============================================================================
+% --- FACHBEGRIFFE FÜRS GLOSSAR DEFINIEREN (ALPHABETISCH SORTIERT) ---
+% =============================================================================
 
-\newglossaryentry{sammelschiene}{
-    name={Sammelschiene},
-    plural={Sammelschienen},
-    description={Ein massiver elektrischer Leiter aus Kupfer oder Aluminium in einer Schaltanlage, der zur Verteilung hoher Ströme auf mehrere Abgänge dient.}
+\newglossaryentry{acv-verfahren}{
+    name={ACV-Messverfahren},
+    description={Ein Messverfahren, das Wechselspannung und -strom nutzt, um frequenzabhängige Eigenschaften eines Bauteils zu bestimmen. Bei \glspl{messstromwandler} dient es typischerweise zur Ermittlung von Induktivitäten und Eisenverlusten.}
 }
 
-\newglossaryentry{fremdfeld}{
-    name={Fremdfeld},
-    plural={Fremdfelder},
-    description={Ein magnetisches oder elektrisches Feld, das von einer externen Quelle erzeugt wird und als Störgröße auf ein betrachtetes System einwirkt.}
+\newglossaryentry{bh-kennlinie}{
+    name={B(H)-Kennlinie},
+    plural={B(H)-Kennlinien},
+    description={Auch Magnetisierungskennlinie genannt. Beschreibt den nichtlinearen Zusammenhang zwischen der magnetischen Flussdichte (B) und der magnetischen Feldstärke (H) in einem ferromagnetischen Material. Sie ist essenziell zur Modellierung der \gls{magnetische-saettigung}.}
 }
 
-\newglossaryentry{messstromwandler}{
-    name={Messstromwandler},
-    plural={Messstromwandler},
-    description={Ein spezieller Transformator, der hohe Primärströme in ein proportionales, kleines und für Messgeräte verarbeitbares Sekundärsignal umwandelt. Im Fachjargon oft verkürzt als 'Wandler' bezeichnet.}
+\newglossaryentry{biot-savart}{
+    name={Biot-Savart-Gesetz},
+    description={Ein Grundgesetz der Magnetostatik, das die Stärke und Richtung des Magnetfeldes berechnet, das von einem konstanten elektrischen Strom (DC) erzeugt wird.}
 }
 
 \newglossaryentry{buerde}{
@@ -51,34 +51,9 @@
     description={Die Bürde beschreibt die an den Sekundärkreis eines Messwandlers angeschlossene Last (Impedanz). Sie wird üblicherweise in Voltampere (VA) angegeben und ist entscheidend für die Einhaltung der Genauigkeitsklasse.}
 }
 
-\newglossaryentry{genauigkeitsklasse}{
-    name={Genauigkeitsklasse},
-    plural={Genauigkeitsklassen},
-    description={Gibt die maximal zulässige prozentuale Messabweichung eines Messwandlers unter Nennbedingungen an. Gängige Klassen sind z.B. 0,2, 0,5 oder 1.}
-}
-
-\newglossaryentry{niederspannung}{
-    name={Niederspannung},
-    plural={Niederspannungen},
-    description={Bezeichnet nach IEC 60038 Wechselspannungen (AC) bis 1000 V und Gleichspannungen (DC) bis 1500 V. In diesem Bereich sind die meisten öffentlichen und industriellen Stromnetze angesiedelt.}
-}
-
-\newglossaryentry{induktionsgesetz}{
-    name={Induktionsgesetz},
-    plural={Induktionsgesetze},
-    description={Das Faradaysche Induktionsgesetz ist eine physikalische Grundlage der Elektrotechnik. Es besagt, dass eine zeitliche Änderung des magnetischen Flusses durch eine Leiterschleife eine elektrische Spannung in dieser Schleife induziert. Dies ist das Funktionsprinzip von Transformatoren und somit auch von Messstromwandlern.}
-}
-
-\newglossaryentry{niederspannungsschaltanlage}{
-    name={Niederspannungsschaltanlage},
-    plural={Niederspannungsschaltanlagen},
-    description={Eine Anlage zur Verteilung elektrischer Energie im Bereich der Niederspannung. Sie kombiniert Schaltgeräte zum Verbinden und Trennen von Stromkreisen mit Schutz- und Messeinrichtungen wie Sicherungen und Messstromwandlern.}
-}
-
-\newglossaryentry{leiter}{
-    name={Leiter},
-    plural={Leiter},
-    description={Ein elektrisch leitendes Material, das dazu dient, elektrischen Strom zu führen. In Schaltanlagen sind dies typischerweise \glspl{sammelschiene} oder Kabel.}
+\newglossaryentry{dcv-verfahren}{
+    name={DCV-Messverfahren},
+    description={Ein Messverfahren, das Gleichspannung und -strom verwendet, um rein ohmsche Widerstände zu messen. Bei einem \gls{messstromwandler} wird es zur präzisen Bestimmung des Kupferwiderstandes der Sekundärwicklung eingesetzt.}
 }
 
 \newglossaryentry{erwaermungspruefstand}{
@@ -87,30 +62,61 @@
     description={Ein spezieller Prüfaufbau zur Verifizierung des thermischen Verhaltens von Schaltanlagen nach \acrshort{vde}-Norm. Mittels eines regelbaren Hochstromtransformators wird der Nenn- oder Überlaststrom bei sehr geringer Spannung (typischerweise unter 10 V) in die Hauptstrombahnen eingespeist. Dies simuliert die reale Wärmeverlustleistung (I²R) im Betrieb und ermöglicht die Überprüfung, ob die entstehende Wärme zuverlässig abgeführt wird und keine unzulässig hohen Temperaturen an Komponenten wie \glspl{sammelschiene} oder Schaltgeräten auftreten.}
 }
 
-% --- NEU HINZUGEFÜGTE GLOSSAREINTRÄGE ---
-
 \newglossaryentry{femm}{
     name={FEMM},
     plural={FEMM},
     description={Finite Element Method Magnetics. Eine quelloffene Software zur Simulation von 2D- und achsensymmetrischen Problemen der Elektrostatik und Magnetostatik. Sie wird häufig in der Elektrotechnik zur Analyse von magnetischen Feldern in Geräten wie Transformatoren oder Motoren eingesetzt.}
 }
 
-\newglossaryentry{stationaer}{
-    name={Stationäres Problem},
-    plural={Stationäre Probleme},
-    description={Ein Systemzustand, bei dem die betrachteten physikalischen Größen (z.B. Ströme, Felder) zeitlich konstant sind. Dies ist typisch für Gleichstrom-Anwendungen (DC). \gls{femm} ist primär auf die Lösung solcher Probleme ausgelegt.}
+\newglossaryentry{fremdfeld}{
+    name={Fremdfeld},
+    plural={Fremdfelder},
+    description={Ein magnetisches oder elektrisches Feld, das von einer externen Quelle erzeugt wird und als Störgröße auf ein betrachtetes System einwirkt. Das Einwirken dieses Feldes (die Einkopplung) auf einen \gls{messstromwandler} kann dessen Messgenauigkeit beeinträchtigen.}
 }
 
-\newglossaryentry{magnetfeldeinkopplung}{
-    name={Magnetfeldeinkopplung},
-    plural={Magnetfeldeinkopplungen},
-    description={Ein Phänomen, bei dem ein zeitlich veränderliches Magnetfeld einer externen Quelle (z.B. ein benachbarter \gls{leiter}) eine Spannung in einer Leiterschleife (z.B. der Sekundärwicklung eines \gls{messstromwandler}) induziert. Diese Einkopplung ist eine Form der elektromagnetischen Störung und kann die Messgenauigkeit beeinträchtigen.}
+\newglossaryentry{genauigkeitsklasse}{
+    name={Genauigkeitsklasse},
+    plural={Genauigkeitsklassen},
+    description={Gibt die maximal zulässige prozentuale Messabweichung eines Messwandlers unter Nennbedingungen an. Gängige Klassen sind z.B. 0,2, 0,5 oder 1.}
 }
 
-\newglossaryentry{interne-parameter}{
-    name={Interne Parameter},
-    plural={Interne Parameter},
-    description={Die elektrischen Ersatzgrößen, die das reale Verhalten eines Bauteils wie eines \gls{messstromwandler} beschreiben. Dazu zählen primär der ohmsche Wicklungswiderstand sowie die Haupt- und Streuinduktivitäten.}
+\newglossaryentry{induktionsgesetz}{
+    name={Induktionsgesetz},
+    plural={Induktionsgesetze},
+    description={Das Faradaysche Induktionsgesetz ist eine physikalische Grundlage der Elektrotechnik. Es besagt, dass eine zeitliche Änderung des magnetischen Flusses durch eine Leiterschleife eine elektrische Spannung in dieser Schleife induziert. Dies ist das Funktionsprinzip von Transformatoren und somit auch von Messstromwandlern.}
+}
+
+\newglossaryentry{kompensationswiderstand}{
+    name={Kompensationswiderstand},
+    plural={Kompensationswiderstände},
+    description={Ein zusätzlich in den Sekundärkreis eines \gls{messstromwandler} geschalteter ohmscher Widerstand. Er dient dazu, eine \gls{unterbuerdung} zu kompensieren, indem die Gesamtimpedanz künstlich auf den Wert der Nennbürde angehoben wird.}
+}
+
+\newglossaryentry{leerlaufbetrieb}{
+    name={Leerlaufbetrieb (Stromwandler)},
+    description={Der unzulässige Betriebszustand eines \gls{messstromwandler}, bei dem die Sekundärwicklung offen ist (keine \gls{buerde} angeschlossen). Dies führt zu extrem hohen, gefährlichen Spannungsspitzen an den Sekundärklemmen und zur Zerstörung des Wandlers.}
+}
+
+\newglossaryentry{leiter}{
+    name={Leiter},
+    plural={Leiter},
+    description={Ein elektrisch leitendes Material, das dazu dient, elektrischen Strom zu führen. In Schaltanlagen sind dies typischerweise \glspl{sammelschiene} oder Kabel.}
+}
+
+\newglossaryentry{magnetische-saettigung}{
+    name={Magnetische Sättigung},
+    description={Ein Effekt in ferromagnetischen Werkstoffen, bei dem die magnetische Flussdichte (B) auch bei einer starken Erhöhung der äußeren magnetischen Feldstärke (H) nicht weiter ansteigt. Der Kern kann keinen weiteren magnetischen Fluss aufnehmen.}
+}
+
+\newglossaryentry{matlab}{
+    name={MATLAB},
+    description={Eine kommerzielle Software von The MathWorks, Inc. zur Lösung mathematischer Probleme und zur numerischen Simulation. Der Name steht für „Matrix Laboratory“.}
+}
+
+\newglossaryentry{messstromwandler}{
+    name={Messstromwandler},
+    plural={Messstromwandler},
+    description={Ein spezieller Transformator, der hohe Primärströme in ein proportionales, kleines und für Messgeräte verarbeitbares Sekundärsignal umwandelt. Im Fachjargon oft verkürzt als 'Wandler' bezeichnet.}
 }
 
 \newglossaryentry{nennstrom}{
@@ -119,24 +125,42 @@
     description={Der vom Hersteller festgelegte Wert des Primärstroms (\acrshort{in}), für den ein \gls{messstromwandler} ausgelegt ist und bei dem er seine spezifizierte \gls{genauigkeitsklasse} einhält.}
 }
 
-\newglossaryentry{genauigkeitsmessung}{
-    name={Genauigkeitsmessung},
-    plural={Genauigkeitsmessungen},
-    description={Ein normiertes Messverfahren zur Überprüfung der Genauigkeit von Messwandlern. Dabei werden der Übersetzungsfehler (Amplitudenfehler) und der Winkelfehler (Phasenfehler) bei definierten Anteilen des \gls{nennstrom} bestimmt und mit den Grenzwerten der \gls{genauigkeitsklasse} verglichen.}
+\newglossaryentry{niederspannung}{
+    name={Niederspannung},
+    plural={Niederspannungen},
+    description={Bezeichnet nach IEC 60038 Wechselspannungen (AC) bis 1000 V und Gleichspannungen (DC) bis 1500 V. In diesem Bereich sind die meisten öffentlichen und industriellen Stromnetze angesiedelt.}
 }
 
-\newglossaryentry{acv-verfahren}{
-    name={ACV-Messverfahren},
-    description={Ein Messverfahren, das Wechselspannung und -strom nutzt, um frequenzabhängige Eigenschaften eines Bauteils zu bestimmen. Bei \glspl{messstromwandler} dient es typischerweise zur Ermittlung von Induktivitäten und Eisenverlusten.}
+\newglossaryentry{niederspannungsschaltanlage}{
+    name={Niederspannungsschaltanlage},
+    plural={Niederspannungsschaltanlagen},
+    description={Eine Anlage zur Verteilung elektrischer Energie im Bereich der Niederspannung. Sie kombiniert Schaltgeräte zum Verbinden und Trennen von Stromkreisen mit Schutz- und Messeinrichtungen wie Sicherungen und Messstromwandlern.}
 }
 
-\newglossaryentry{dcv-verfahren}{
-    name={DCV-Messverfahren},
-    description={Ein Messverfahren, das Gleichspannung und -strom verwendet, um rein ohmsche Widerstände zu messen. Bei einem \gls{messstromwandler} wird es zur präzisen Bestimmung des Kupferwiderstandes der Sekundärwicklung eingesetzt.}
+\newglossaryentry{phasenmittelabstand}{
+    name={Phasenmittelabstand},
+    plural={Phasenmittelabstände},
+    description={Der Mittenabstand zwischen den \glspl{sammelschiene} oder \glspl{leiter} benachbarter Phasen (z.B. von \acrshort{l1} zu \acrshort{l2}) in einem Drehstromsystem.}
 }
 
-% HINZUGEFÜGT, UM DEN FEHLER ZU BEHEBEN
-\newglossaryentry{matlab}{
-    name={MATLAB},
-    description={Eine kommerzielle Software von The MathWorks, Inc. zur Lösung mathematischer Probleme und zur numerischen Simulation. Der Name steht für „Matrix Laboratory“.}
+\newglossaryentry{quasi-stationaer}{
+    name={Quasi-stationäres Modell},
+    description={Ein Simulationsansatz, um ein zeitdynamisches Problem (z.B. 50-Hz-Wechselstrom) durch eine Serie von diskreten, zu einzelnen Zeitpunkten berechneten stationären (statischen) Zuständen anzunähern.}
+}
+
+\newglossaryentry{sammelschiene}{
+    name={Sammelschiene},
+    plural={Sammelschienen},
+    description={Ein massiver elektrischer Leiter aus Kupfer oder Aluminium in einer Schaltanlage, der zur Verteilung hoher Ströme auf mehrere Abgänge dient.}
+}
+
+\newglossaryentry{unterbuerdung}{
+    name={Unterbürdung},
+    description={Ein Betriebszustand, bei dem die angeschlossene sekundäre \gls{buerde} eines \gls{messstromwandler} signifikant niedriger ist als dessen Nennbürde. Dies tritt häufig bei der Verwendung moderner, niederohmiger Digitalmessgeräte mit älteren Wandlern auf und kann zu Messfehlern führen.}
+}
+
+\newglossaryentry{wandler-kurzschlussklemme}{
+    name={Wandler-Kurzschlussklemme},
+    plural={Wandler-Kurzschlussklemmen},
+    description={Eine spezielle Anschlussklemme für die Sekundärseite von \glspl{messstromwandler}. Sie verfügt über einen Mechanismus (z.B. eine Brücke oder einen Schieber), um die Sekundärwicklung vor dem Trennen des Messgeräts sicher kurzzuschließen und so den gefährlichen \gls{leerlaufbetrieb} zu verhindern.}
 }
