@@ -4,13 +4,13 @@
 
 % --- SEITENRÄNDER UND GRÖSSE DER KOPF-/FUSSZEILE ---
 \usepackage[
-    a4paper,
-    left=25mm,
-    right=25mm,
-    top=25mm,
-    bottom=5mm,
-    headheight=2cm,
-    footskip=0.75cm
+a4paper,
+left=25mm,
+right=25mm,
+top=25mm,
+bottom=25mm,
+headheight=2cm,
+footskip=15mm
 ]{geometry}
 
 % --- KOPF- UND FUSSZEILE (scrlayer-scrpage) ---
@@ -26,7 +26,7 @@
 
 % Fußzeile befüllen
 \ifoot{\rightmark}
-\ofoot{Seite \thepage\ von \pageref{TotPages}}
+\ofoot{Seite \thepage\ von \ref{TotPages}} % \ref ist korrekt für totpages
 
 % --- SCHRIFTARTEN ---
 \setkomafont{pagehead}{\kopfzeilenSchrift}

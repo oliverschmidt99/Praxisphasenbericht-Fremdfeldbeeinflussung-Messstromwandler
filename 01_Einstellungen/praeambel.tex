@@ -23,7 +23,6 @@
 \usepackage{siunitx}
 \sisetup{locale = DE}
 
-
 \usepackage{filecontents}
 
 % --- TABELLEN ---
@@ -35,7 +34,6 @@
 \usepackage{makeidx}
 % \makeindex % Vorerst auskommentiert
 \usepackage{totpages} % Robustes Paket für Gesamtseitenzahl
-\usepackage[colorlinks=true, linkcolor=blue, citecolor=green, urlcolor=magenta, hidelinks]{hyperref}
 \usepackage[acronym, nonumberlist, toc, section]{glossaries}
 \makeglossaries
 \usepackage{chngcntr}
@@ -48,9 +46,10 @@
 \usepackage[most]{tcolorbox}
 \usepackage[framemethod=TikZ]{mdframed}
 \usepackage{etoolbox}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=green, urlcolor=magenta, hidelinks]{hyperref} % Besser als letztes laden
 
 % --- LAYOUT-DATEI LADEN ---
-
+% (Wird in der Haupt-Datei geladen)
 
 % --- EINSTELLUNG FÜR KOMA-SKRIPT (entfernt Punkte im InIV) ---
 \KOMAoptions{numbers=noenddot}

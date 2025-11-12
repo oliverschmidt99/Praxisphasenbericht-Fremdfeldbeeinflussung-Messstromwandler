@@ -9,4 +9,11 @@
 \section*{Zusammenfassung}
 \addcontentsline{toc}{section}{Zusammenfassung}
 
-Hier fasst du deine Arbeit kurz und prägnant zusammen.
+Kompakte \glspl{niederspannungsschaltanlage} erfordern konstruktionsbedingt geringe \glspl{phasenmittelabstand}. Die dabei auftretenden hohen Betriebsströme führen zu starken magnetischen \glspl{fremdfeld}, welche die Messgenauigkeit von \glspl{messstromwandler} signifikant beeinträchtigen können. Insbesondere die Störeinkopplung auf die mittlere Phase (\acrshort{l2}) stellt eine Herausforderung für die Einhaltung der \gls{genauigkeitsklasse} dar.
+
+Das Ziel dieser Arbeit ist die systematische Analyse dieser \gls{fremdfeld}beeinflussung. Es wird eine Methodik entwickelt, um die physikalischen Ursachen der Messabweichungen zu quantifizieren und Lösungsansätze für die Konstruktionspraxis abzuleiten.
+
+Hierfür wird ein zweigleisiger Ansatz verfolgt, der Simulation und Messtechnik kombiniert. Zunächst wird der Aufbau eines \gls{quasi-stationaer}en Simulationsmodells mittels der \acrshort{fem}-Software \gls{femm} vorgestellt. Diese Methode bildet die nichtlinearen Materialeigenschaften der Wandlerkerne, wie die \gls{bh-kennlinie} und die \gls{magnetische-saettigung}, detailliert ab. Zur Parametrierung und Steuerung der 50-Hz-Simulationen wird eine eigens entwickelte Weboberfläche beschrieben.
+
+Parallel zur Simulation wird der messtechnische Aufbau zur Validierung der Modelle am \gls{erwaermungspruefstand} erläutert. Dieser Prüfstand ermöglicht die Einspeisung realer Hochströme in verschiedene \gls{sammelschiene}n-Anordnungen. Zur systematischen Erfassung der Genauigkeitsmessungen nach DIN EN 61869-2 wird ein maßgeschneidertes VBA-Messprotokoll-Tool konzipiert und implementiert.
+
