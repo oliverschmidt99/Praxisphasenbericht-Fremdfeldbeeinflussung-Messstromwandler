@@ -1,20 +1,34 @@
-% =============================================================================
-% KAPITEL 3: REFLEXION
-% -----------------------------------------------------------------------------
-% Hier reflektierst du über deine Erfahrungen während der Praxisphase.
-% =============================================================================
-
 \section{Reflexion}
-\label{chap:reflexion}
+\label{sec:reflexion}
 
 \subsection{Was habe ich gelernt?}
 \label{sec:gelernt}
-Welche neuen fachlichen und persönlichen Kompetenzen konntest du erwerben?
+
+Während der Praxisphase konnte ich meine Kenntnisse in mehreren Bereichen erheblich erweitern.
+
+Im Bereich der \textbf{Softwareentwicklung} habe ich meine Programmierfähigkeiten durch zwei zentrale Projekte auf eine neue Ebene gebracht. Die Entwicklung des VBA-Tools in Excel zur systematischen Messdatenerfassung (Messprotokoll) schulte meine Fähigkeiten in der strukturierten Programmierung und im Datenbankdesign. Parallel dazu erforderte die Konzeption der maßgeschneiderten Simulationsumgebung (Webserver) Kenntnisse in Webtechnologien, um die FEMM-Software anzusteuern und die Simulationen zu parametrieren.
+
+Fachlich habe ich ein tiefes Verständnis für die \textbf{Magnetfeldsimulation} entwickelt. Die größte Herausforderung – und damit der größte Lerneffekt – bestand darin, die stationäre FEMM-Software durch die Web-Anwendung für quasi-stationäre 50-Hz-Wechselfelder nutzbar zu machen. Ich verstehe nun detailliert, wie komplexe physikalische Vorgänge, inklusive nichtlinearer Materialeigenschaften (BH-Kennlinien) und Sättigungseffekte, in einem 2D-Modell abgebildet werden.
+
+Im praktischen Bereich der \textbf{Messtechnik} habe ich den sicheren Umgang mit dem Erwärmungsprüfstand und professioneller Messtechnik erlernt. Dazu gehörte der normgerechte Aufbau nach DIN EN 61869-2, die korrekte Konfiguration der Bürde (inklusive Kompensationswiderständen) und die systematische Durchführung von Genauigkeitsmessungen unter verschiedenen geometrischen Anordnungen.
+
+Theoretisch konnte ich mein im Studium erworbenes Wissen über den \textbf{Elektromagnetismus} stark vertiefen. Die intensive Auseinandetzung mit der Fremdfeldproblematik, dem Induktionsgesetz und der realen Funktionsweise von Messstromwandlern hat die theoretischen Grundlagen greifbar und praktisch anwendbar gemacht.
+
 
 \subsection{Was lief nicht so gut?}
 \label{sec:schwierigkeiten}
-Wo gab es Herausforderungen oder unerwartete Probleme?
+
+Zu Beginn der Simulationsphase gab es Herausforderungen. Der erste Ansatz, die Magnetfeldkopplung mittels \gls{matlab} und dem \gls{biot-savart}-Gesetz zu berechnen, erwies sich als nicht zielführend. Dieses Modell konnte die physikalische Realität, insbesondere die nichtlinearen Sättigungseffekte der ferromagnetischen Wandlerkerne, nicht ausreichend abbilden. Dieser Umweg kostete wertvolle Zeit.
+
+Eine weitere Schwierigkeit war die Einarbeitung in \gls{femm}. Die Software ist zwar leistungsstark, aber auf stationäre 2D-Probleme beschränkt. Die Notwendigkeit, daraus eine quasi-stationäre 50-Hz-Simulation zu entwickeln, erforderte die Konzeption einer zusätzlichen Software-Schicht (den Webserver), was den anfänglichen Aufwand erhöhte.
+
+Im messtechnischen Teil war die manuelle Protokollierung der Daten zu Beginn unstrukturiert. Wie in Abschnitt \ref{sec:vorgehen:messung:messprotokoll} beschrieben, erwies sich das Kopieren von Excel-Vorlagen als fehleranfällig und unpraktikabel für den Datenvergleich. Diese ineffiziente Methode musste überarbeitet werden, was zur Entwicklung des VBA-Tools führte.
+
 
 \subsection{Wie hätte man es besser machen können?}
 \label{sec:verbesserung}
-Was würdest du im Nachhinein anders machen?
+
+Rückblickend hätte der Simulationsprozess effizienter gestaltet werden können. Statt Zeit in den \gls{matlab}-Ansatz zu investieren, wäre eine frühere und tiefere Recherche nach etablierten FEM-Tools sinnvoll gewesen. Die Erkenntnis, dass die Nichtlinearität der \gls{bh-kennlinie} der entscheidende Faktor ist, hätte den Fokus direkt auf ein Werkzeug wie \gls{femm} lenken müssen.
+
+In diesem Zusammenhang steht auch die Einarbeitung in VBA. Diese Technologie war mir aus dem Studium oder Privatem nicht bekannt und wurde erst in der Praxisphase erlernt. Eine frühere Vermittlung dieser Kenntnisse seitens der Hochschule, etwa als praxisvorbereitende Aufgabe, wäre eine große Bereicherung für das Berufsleben. Rückblickend hätte dies nicht nur die Erstellung des Messprotokolls beschleunigt; auch die Simulationsumgebung (der "Webbrowser") hätte sich womöglich in kürzerer Zeit und mit einer ähnlichen grafischen Oberfläche direkt in Excel mittels VBA realisieren lassen.
+

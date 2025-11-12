@@ -25,9 +25,9 @@ Die messtechnische Untersuchung der \glspl{messstromwandler} findet im \gls{erwa
 \subsubsection{Vorbereitung}
 \label{sec:vorgehen:vorbereitung}
 
-Zur Vorbereitung der messtechnischen und simulativen Untersuchungen wurden im Vorfeld \glspl{messstromwandler} verschiedener Hersteller mit unterschiedlichen \glspl{nennstrom} beschafft.
+Als Vorbereitung für die messtechnischen und simulativen Untersuchungen wurden \glspl{messstromwandler} verschiedener Hersteller mit unterschiedlichen \glspl{nennstrom} beschafft.
 
-Parallel dazu erfolgte eine umfassende Einarbeitung in die theoretischen Grundlagen der Messwandlertechnik und der \gls{fremdfeld}problematik. Dies umfasste die Recherche und Analyse relevanter wissenschaftlicher Artikel (Paper) und Fachbücher. Ergänzend wurden erste analytische Berechnungen zur Magnetfeldeinkopplung mittels \gls{matlab}  durchgeführt.
+Parallel dazu erfolgte eine umfassende Einarbeitung in die theoretischen Grundlagen der Messwandlertechnik und der \gls{fremdfeld}problematik. Dies umfasste die Recherche und Analyse relevanter wissenschaftlicher Artikel (Paper) und Fachbücher. Ergänzend wurden erste analytische Berechnungen zur Magnetfeldeinkopplung mittels \gls{matlab} durchgeführt.
 
 \subsection{Erwärmungsprüfstand}
 \label{sec:erwaermungspruefstand}
@@ -37,14 +37,11 @@ Parallel dazu erfolgte eine umfassende Einarbeitung in die theoretischen Grundla
 \subsection{Simulation}
 \label{sec:vorgehen:simulation}
 
-Für die Simulation wurden verschiedene Ansätze verfolgt. Zunächst kam ein in \gls{matlab} implementiertes Skript zum Einsatz, das die Magnetfelder auf Grundlage des \gls{biot-savart}-Gesetzes berechnet. Schnell zeigte sich jedoch, dass dieser Ansatz die physikalische Realität nur unzureichend abbildet. Daher wurde eine alternative Methode erforderlich.
+Für die Simulation wurden verschiedene Ansätze verfolgt. Zunächst kam ein in \gls{matlab} implementiertes Skript zum Einsatz, das die Magnetfelder auf Grundlage des \gls{biot-savart}-Gesetzes berechnete. Schnell zeigte sich jedoch, dass dieser Ansatz die physikalische Realität nur unzureichend abbildete. Daher wurde eine alternative Methode erforderlich.
 
 Nach einer ausführlichen Recherche geeigneter, kostenfreier Open-Source-Software für Magnetfeldsimulationen fiel die Wahl auf \gls{femm} (Finite Element Method Magnetics).
 
 \Gls{femm} ist ein Programm, das magnetische Probleme mithilfe der Finiten-Elemente-Methode (\acrshort{fem}) löst. Der entscheidende Vorteil gegenüber dem Biot-Savart-Ansatz liegt darin, dass \gls{femm} nicht nur komplexe Leitergeometrien, sondern auch die nichtlinearen Materialeigenschaften ferromagnetischer Werkstoffe (z. B. \gls{bh-kennlinie} und \gls{magnetische-saettigung}) berücksichtigt. Genau diese Eigenschaften wurden beim reinen Biot-Savart-Modell vernachlässigt, was zu deutlichen Abweichungen führte. Daher wurde das Modell in \gls{femm} neu aufgebaut, um die Sättigungseffekte realitätsnah abzubilden.
-
-FEMM (Finite Element Method Magnetics)
-\Gls{femm} ist eine Programmsuite zur Lösung elektromagnetischer Probleme in zweidimensionalen planaren oder achsensymmetrischen Geometrien. Das Programm kann aktuell linear und notlinear magnetostatische, zeitharmonische magnetische, elektrostatische sowie stationäre Wärmeflussprobleme berechnen.
 
 \subsubsection{Maßgeschneiderte Simulationsumgebung}
 \label{sec:vorgehen:simulation:software}
@@ -53,7 +50,7 @@ Für die spezifischen Anforderungen des Messaufbaus wurde auf Basis von \gls{fem
 Diese Lösung stellt eine Weboberfläche (siehe Abbildung \ref{fig:weboberflaeche}) bereit, über die sich die Simulationen definieren, parametrieren und starten lassen (siehe Abbildung \ref{fig:weboberflaeche_einstellungen}). Die Oberfläche dient als einheitliche Vorlage (Template) und ermöglicht die standardisierte Erstellung von Simulationsmodellen für verschiedene Wandlertypen und Sammelschienenanordnungen.
 
 Da \Gls{femm} ausschließlich stationäre Fälle betrachtet, erweitert die Hilfssoftware diesen Ansatz zu einem \gls{quasi-stationaer}.
-Die Hauptschwierigkeit bestand darin, die zeitharmonischen 50-Hz-Wechselfelder der \glspl{sammelschiene} darzustellen, obwohl \gls{femm} primär für magnetostatische (DC-)Probleme ausgelegt ist. Um dennoch dynamische Vorgänge zu simulieren, wurde ein quasi-stationärer Ansatz implementiert:
+Die Hauptherausforderung bei der Simulation bestand darin, die zeitharmonischen 50-Hz-Wechselfelder der \glspl{sammelschiene} darzustellen.
 Zu diskreten Zeitpunkten $t_n$ innerhalb einer Netzperiode berechnet die Hilfssoftware die jeweiligen Momentanwerte der Phasenströme $i_{L1}(t_n)$, $i_{L2}(t_n)$ und $i_{L3}(t_n)$. Diese Werte werden automatisiert an \gls{femm} übergeben, das für jeden Zeitschritt ein stationäres Magnetfeldproblem löst. Durch die Aneinanderreihung der Einzelergebnisse – insbesondere des magnetischen Flusses $\Psi(t_n)$ im Wandlerkern – lässt sich der zeitliche Verlauf über eine volle Periode rekonstruieren.
 
 \einfuegenBildGross{03_Ressourcen/Bilder/website_Simulations-Vorschau.png}{Weboberfläche der Simulationssoftware mit Vorschau des Modells}{fig:weboberflaeche}
@@ -76,31 +73,33 @@ Der detaillierte Modellaufbau in \gls{femm} erfolgte in einem zweidimensionalen 
 
 Bei der Messung am \gls{erwaermungspruefstand} sollen die \glspl{messstromwandler} in verschiedenen geometrischen Anordnungen auf ihre Genauigkeit hin überprüft werden. Die Anordnung der Kupferschienen wurde für diese Messungen speziell angefertigt, wodurch sich die \glspl{messstromwandler} möglichst einfach und schnell in den verschiedenen Positionen vermessen lassen.
 
+
+\subsubsection{Messaufbau}
+\label{sec:vorgehen:messung:messaufbau}
+
+
+Ziel der Messungen ist es zu überprüfen, ob die \glspl{messstromwandler} auch unter dem Einfluss von Fremdfeldern, wie sie in einem Drehstromsystem durch benachbarte Phasen entstehen, die Genauigkeitsanforderungen der DIN-Norm 61869-2 einhalten. Die Grenzwerte für die Übersetzungsmessabweichung sind dazu in Tabelle~\ref{tab:grenzwerte_wandler_reduziert} dargestellt.
+
 \begin{table}[H]
     \centering
     \caption{Grenzwerte für Übersetzungsmessabweichung für Stromwandler für Messzwecke (Klassen 0,1 bis 1) nach DIN EN 61869-2}
     \label{tab:grenzwerte_wandler_reduziert}
     \begin{tabular}{lcccc}
         \toprule
-        \multirow{3}{*}{\textbf{Genauigkeitsklasse}} & \multicolumn{4}{c}{\textbf{Übersetzungsmessabweichung}}                            \\
-                                                     & \multicolumn{4}{c}{$\pm \%$ bei Strom (\% von Bemessungsstrom)}                    \\
+        \multirow{3}{*}{Genauigkeitsklasse} & \multicolumn{4}{c}{Übersetzungsmessabweichung}                                     \\
+                                            & \multicolumn{4}{c}{$\pm \%$ bei Strom (\% von Bemessungsstrom)}                    \\
         \cmidrule(lr){2-5}
-                                                     & 5                                                               & 20   & 100 & 120 \\
+                                            & 5                                                               & 20   & 100 & 120 \\
         \midrule
-        0,1                                          & 0,4                                                             & 0,2  & 0,1 & 0,1 \\
-        0,2                                          & 0,75                                                            & 0,35 & 0,2 & 0,2 \\
-        0,5                                          & 1,5                                                             & 0,75 & 0,5 & 0,5 \\
-        1                                            & 3,0                                                             & 1,5  & 1,0 & 1,0 \\
+        0,1                                 & 0,4                                                             & 0,2  & 0,1 & 0,1 \\
+        0,2                                 & 0,75                                                            & 0,35 & 0,2 & 0,2 \\
+        0,5                                 & 1,5                                                             & 0,75 & 0,5 & 0,5 \\
+        1                                   & 3,0                                                             & 1,5  & 1,0 & 1,0 \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-\subsubsection{Messaufbau}
-\label{sec:vorgehen:messung:messaufbau}
-
-Ziel der Messungen ist es zu überprüfen, ob die \glspl{messstromwandler} auch unter dem Einfluss von Fremdfeldern, wie sie in einem Drehstromsystem durch benachbarte Phasen entstehen, die Genauigkeitsanforderungen der DIN-Norm 61869-2 einhalten. Die Grenzwerte für die Übersetzungsmessabweichung sind dazu in Tabelle~\ref{tab:grenzwerte_wandler_reduziert} dargestellt.
-
-Zu diesem Zweck zeigt Abbildung \ref{fig:erwaermungspruefstand_ohne_wandler} das spezialisierte Kupferschienensystem des \gls{erwaermungspruefstand}. Dieser Aufbau ermöglicht die Simulation von zwei verschiedenen \glspl{phasenmittelabstand}. Der \gls{phasenmittelabstand} bezeichnet den Abstand zwischen den Außenleitern. Dieses Maß wird durch den Hauptschalter bestimmt, an dem die Kupferschienen befestigt sind.
+Zu diesem Zweck zeigt Abbildung \ref{fig:erwaermungspruefstand_ohne_wandler} das spezialisierte Kupferschienensystem des \gls{erwaermungspruefstand}. Dieser Aufbau ermöglicht die Simulation von zwei verschiedenen \glspl{phasenmittelabstand}. Der \gls{phasenmittelabstand} bezeichnet den Abstand zwischen den Außenleitern. Dieses Maß wird durch den Hauptschalter bestimmt, an dem die Kupferschienen befestigt sind (im Erwärmungsprüfstand ist kein Hauptschalter verbaut).
 
 Das abgebildete System ist zweigeteilt:
 \begin{itemize}
@@ -112,7 +111,7 @@ Ein drittes Schienensystem (für 3200 A bis 5000 A mit 210 mm \gls{phasenmittela
 
 Um die \glspl{messstromwandler} auf dem Schienensystem zu installieren, muss die Kurzschlussbrücke entfernt werden. Anschließend können die Wandler von unten auf die Schienen der jeweiligen Phasen geschoben werden.
 
-\einfuegenBildGross{03_Ressourcen/Bilder/erwaermungspruefstand_abgang_ohne_wandler.png}{Messaufbau des Erwärmungsprüfstands ohne Messstromwandler}{fig:erwaermungspruefstand_ohne_wandler}
+\einfuegenBildMittel{03_Ressourcen/Bilder/erwaermungspruefstand_abgang_ohne_wandler.png}{Messaufbau des Erwärmungsprüfstands ohne Messstromwandler}{fig:erwaermungspruefstand_ohne_wandler}
 
 In der folgenden Abbildung \ref{fig:erwaermungspruefstand_wandler_pos2} ist die Position 2 realisiert. Bei dieser Anordnung wird die Phase L2 durch die Installation einer zusätzlichen Kupferschiene mit einem Winkel nach vorne verlagert.
 
@@ -120,15 +119,19 @@ In der folgenden Abbildung \ref{fig:erwaermungspruefstand_wandler_pos2} ist die 
 
 Nach der Montage am Schienensystem werden die \glspl{messstromwandler} verdrahtet. Dafür werden die Anschlüsse der Sekundärwicklung auf spezielle \glspl{wandler-kurzschlussklemme} geführt. Diese Klemmen ermöglichen ein sicheres Kurzschließen der Sekundärseite, bevor ein Messgerät entfernt oder getauscht wird. Zudem bieten diese Klemmen die Möglichkeit, Messgeräte direkt über Standard-Labormessleitungen anzuschließen.
 
+
+% Dieser Abschnitt kann ggf. auskommentiet werden und in die Bachelor arbeit übernommen werden
 Dieser Schritt ist aus Sicherheitsgründen essenziell: Ein \gls{messstromwandler} darf niemals auf der Sekundärseite offen betrieben werden (\gls{leerlaufbetrieb}). Im Leerlauf würden an den offenen Klemmen extrem hohe und gefährliche Spannungen entstehen. Diese lebensgefährlichen Spannungsspitzen können die Isolation des Wandlers zerstören und stellen eine ernste Gefahr durch Stromschlag dar.
+
 
 Ein weiterer wichtiger Aspekt ist die \gls{buerde} des Wandlers. \Glspl{messstromwandler} besitzen eine definierte Nennbürde (meist in VA angegeben), die im Betrieb eingehalten werden muss, damit der Wandler korrekte Messergebnisse innerhalr seiner \gls{genauigkeitsklasse} liefert.
 Das Ersatzschaltbild in Abbildung \ref{fig:esb_buerde} visualisiert die Komponenten der sekundärseitigen Gesamtimpedanz, die sich aus den Leitungswiderständen ($R_{Kabel}$), dem Messgerät ($A$) und dem, falls nötig, zusätzlichen Kompensationswiderstand ($R_{Kompensation}$) zusammensetzt.
 
 \einfuegenBildGross{03_Ressourcen/Bilder/ESB_Messwandler.pdf}{Ersatzschaltbild der sekundärseitigen Bürde (Kabel, Messgerät und ggf. Kompensation)}{fig:esb_buerde}
 
+% Dieser Abschnitt kann ggf. auskommentiet werden und in die Bachelor arbeit übernommen werden
 Früher waren analoge Dreheisenmesswerke der Standard zur Strommessung. Da diese Messwerke eine signifikante interne Bürde (Eigenverbrauch) aufweisen, wurden die Wandler entsprechend für eine höhere Ausgangsbürde ausgelegt. Heutzutage erfolgen Messungen primär mittels digitaler Messgeräte. Diese sind im Strommessbereich extrem niederohmig (die Impedanz liegt oft deutlich unter 1 $\Omega$).
-
+% Dieser Abschnitt kann ggf. auskommentiet werden und in die Bachelor arbeit übernommen werden
 Wird ein älterer Wandler, der für eine hohe Bürde ausgelegt ist, mit einem modernen, niederohmigen Messgerät betrieben, wird die Nennbürde nicht mehr erreicht. Man spricht von einer \gls{unterbuerdung}. Dieser Betriebszustand führt zu Messfehlern. Um dies zu kompensieren und den Wandler in seinem korrekten Arbeitsbereich zu betreiben, müssen zusätzliche \glspl{kompensationswiderstand} in den Sekundärkreis geschaltet werden (siehe $R_{Kompensation}$ in Abbildung \ref{fig:esb_buerde}), um die Gesamtimpedanz auf die Nennbürde des Wandlers zu erhöhen.
 
 \subsubsection{Messprotokoll}
@@ -152,41 +155,61 @@ Aus diesen Gründen wurde ein zentralisiertes Messprotokoll-Tool in Excel konzip
 
 Dieser Aufbau stellt die Datenkonsistenz sicher, vereinfacht die Wartung des Tools und ermöglicht jederzeit eine globale, vergleichbare Auswertung aller erfassten Messdaten.
 
-Im Folgenden werden die Hauptmodule des VBA-Tools vorgestellt.
 
 \einfuegenBildGross{03_Ressourcen/Bilder/tab_dashboard.png}{Dashboard des VBA-Messprotokolls}{fig:tabelle_dashboard}
 
-Das in Abbildung \ref{fig:tabelle_dashboard} gezeigte Dashboard dient als Startseite und zentrale Steuereinheit. Es ermöglicht dem Anwender, einen spezifischen \gls{messstromwandler} anhand seiner Stammdaten (wie Hersteller, \gls{nennstrom} oder \gls{genauigkeitsklasse}) aus der Datenbank zu laden, dessen Messdaten zu bearbeiten und anschließend wieder zu speichern.
+Das in Abbildung \ref{fig:tabelle_dashboard} gezeigte Dashboard dient als zentrale Startseite. Hier wird zu Beginn der Messung der Messstromwandler ausgewählt, der geprüft werden soll. Dessen Stammdaten – also Hersteller, Nennstrom, Nennbürde und Klasse – lädt man direkt aus der Datenbank. Nach Abschluss aller Messungen und Berechnungen wird das Dashboard ebenfalls genutzt, um die bearbeiteten Daten wieder zu speichern.
 
 \einfuegenBildGross{03_Ressourcen/Bilder/tab_buerde.png}{Modul zur Bürdenberechnung}{fig:tabelle_buerde}
 
-Das Modul zur \gls{buerde} (Abbildung \ref{fig:tabelle_buerde}) dient der korrekten Konfiguration des Messaufbaus. Basierend auf den Eingaben für Kabellänge, Leiterquerschnitt und dem Innenwiderstand des Messgeräts ermittelt das Tool die resultierende Kabel- und Messgerätebürde. Es berechnet automatisch den notwendigen \gls{kompensationswiderstand} ($R_{komp}$), um die Nennbürde des Wandlers exakt zu treffen und eine \gls{unterbuerdung} zu verhindern.
+Das Modul zur Bürdenberechnung (Abbildung \ref{fig:tabelle_buerde}) ist entscheidend für die korrekte Konfiguration des Messaufbaus, damit die Nennbürde des Wandlers exakt getroffen wird. Man trägt hier die relevanten Parameter des Aufbaus ein: die Kabellänge zum Messgerät, den Leiterquerschnitt und den Innenwiderstand des Messgeräts. Das Tool berechnet daraus die resultierende Kabel- und Messgerätebürde. Vor allem ermittelt es automatisch den notwendigen Kompensationswiderstand ($R_{komp}$), der eingesetzt werden muss, um eine Unterbürdung zu verhindern und die Nennbürde präzise einzustellen.
 
 \einfuegenBildGross{03_Ressourcen/Bilder/tab_magnetisierungskennline.png}{Modul zur Erfassung der Magnetisierungskennlinie}{fig:tabelle_magnetisierungskennliene}
 
-In Abbildung \ref{fig:tabelle_magnetisierungskennliene} ist das Modul zur Erfassung der Magnetisierungskennlinie dargestellt. Hier werden die gemessenen Wertepaare aus Spannung (U) und Magnetisierungsstrom (I) eingetragen. Anhand der eingegebenen Kerndimensionen (Radius, Höhe, Breite) berechnet das Tool automatisch die relevanten magnetischen Größen wie die magnetische Feldstärke (H) und die Flussdichte (B). Die Ergebnisse werden sowohl tabellarisch als auch grafisch als U(I)-Kennlinie aufbereitet.
+Das in Abbildung \ref{fig:tabelle_magnetisierungskennliene} dargestellte Modul dient der Erfassung des Sättigungsverhaltens des Wandlerkerns.
+
+Hier trägt man die gemessenen Wertepaare aus Spannung (U) und Magnetisierungsstrom (I) in die Tabelle ein. Zusätzlich werden die geometrischen Kerndaten (z.B. Radius, Höhe, Breite) erfasst, die das Tool für die Auswertung benötigt.
+
+Basierend auf den eingegebenen Daten wird die resultierende U(I)-Kennlinie direkt als Grafik dargestellt, was eine sofortige visuelle Beurteilung des Sättigungsverhaltens erlaubt. Die Tabelle unterstützt die Analyse zusätzlich, indem sie automatisch dabei hilft, den Kniepunkt der Kennlinie zu identifizieren.
 
 \einfuegenBildGross{03_Ressourcen/Bilder/tab_genauigkeit.png}{Modul zur Genauigkeitsprüfung}{fig:tabelle_genauigkeit}
 
-Abbildung \ref{fig:tabelle_genauigkeit} zeigt das Kernmodul zur Genauigkeitsprüfung. Die Tabelle ist für die normativ geforderten Messpunkte (z.B. 5 %, 20 %, 100 %, 120 % des \gls{nennstrom}) ausgelegt. Das Tool erfasst die Messwerte für die verschiedenen Phasen (L1, L2, L3) und die jeweilige geometrische Position (hier Position 1). Die berechneten prozentualen Übersetzungsfehler werden live in den Diagrammen geplottet und direkt mit den Grenzwerten der \gls{genauigkeitsklasse} (rote Linien) verglichen.
+Abbildung \ref{fig:tabelle_genauigkeit} zeigt das Kernmodul zur Genauigkeitsprüfung. Es dient der Eingabe und automatisierten Auswertung der Messwerte.
+
+Nach Eingabe der Messwerte für die normativen Prüfpunkte (z.B. 5\%, 20\%, 100\% $I_N$) der Phasen berechnet das Tool den Übersetzungsfehler ($\epsilon$). Die Grafik visualisiert sofort, ob die Messkurve (blau) innerhalb der Grenzlinien (rot) liegt und der Wandler somit die Anforderungen seiner Genauigkeitsklasse erfüllt.
+
+Die Vorgehensweise zur Ermittlung dieser Messwerte ist in Abschnitt \ref{sec:vorgehen:messung:messdurchfuehrung} beschrieben.
+
 
 \subsubsection{Messdurchführung}
 \label{sec:vorgehen:messung:messdurchfuehrung}
 
-% HIER KANNST DU DIE MESSDURCHFÜHRUNG BESCHREIBEN
-% z.B. die Schritte:
-% 1. Wandler in Position 1 montieren
-% 2. Ströme aufprägen (5%, 20%, 100%, 120% In)
-% 3. Messwerte erfassen
-% 4. Wandler in Position 2 montieren
-% 5. Messung wiederholen
+Die Messdurchführung am Prüfstand gliedert sich in zwei Hauptbereiche: die Ermittlung der Wandler-Basiskennwerte (Magnetisierungskennlinie, Wicklungswiderstand) und die eigentliche Genauigkeitsmessung unter Last und Fremdfeldeinfluss.
 
-% =============================================================================
-% DAS NÄCHSTE \subsection BEGINNT ERST HIER
-% =============================================================================
+\paragraph{Kennlinien- und Widerstandsmessung}
+Zuerst werden die internen Parameter des Wandlers bestimmt. Für die Aufnahme der Magnetisierungskennlinie muss die Primärseite des Wandlers unbeschaltet, also im Leerlauf, sein. Die Messung erfolgt sekundärseitig durch das Anlegen einer variablen AC-Spannung, wie in Abbildung \ref{fig:esb_messung_magnetisierungskennlinie} dargestellt. Als Spannungsquelle diente eine regelbare AC-Quelle (Typ: Kocos Artis 600).
+
+\einfuegenBildGross{03_Ressourcen/Bilder/esb_messung_magnetisierungskennlinie.pdf}{Messschaltung zur Aufnahme der Magnetisierungskennlinie}{fig:esb_messung_magnetisierungskennlinie}
+
+Parallel zur Sekundärwicklung wird ein hochohmiger Widerstand geschaltet. Dieser Schutzwiderstand begrenzt die beim Ummagnetisieren des Kerns entstehenden Stromspitzen und schützt so die angeschlossenen Messgeräte.
+
+Bei der Messdurchführung wird die Spannung schrittweise von einem niedrigen Wert beginnend erhöht, bis die Sättigung des Kerns deutlich eintritt. Um den Verlauf der Kennlinie im Bereich des Kniepunkts präzise abzubilden, wurden die Spannungsschritte in dieser Region bewusst verkleinert.
+
+Zusätzlich wurde der Widerstand der Sekundärwicklung ($R_{CT}$) bestimmt. Hierfür wurde das Prüfgerät (Kocos Artis 600) als Gleichspannungsquelle konfiguriert. Aus den gemessenen Werten einer stabilen Gleichspannung und des resultierenden Gleichstroms wurde der Widerstand nach dem Ohm'schen Gesetz berechnet.
+
+\paragraph{Genauigkeitsmessung}
+Nach der Ermittlung der Basiskennwerte erfolgt die zentrale Genauigkeitsmessung am \gls{erwaermungspruefstand}.
+
+Dazu wird der \gls{messstromwandler} zunächst in der ersten geometrischen Anordnung (z.B. Position 1) auf dem Kupferschienensystem montiert. Anschließend werden nacheinander die in der Norm (Tabelle \ref{tab:grenzwerte_wandler_reduziert}) geforderten Prüfströme (z.B. 5\%, 20\%, 100\% und 120\% des \gls{nennstrom}) auf die Primärseite aufgeprägt.
+
+Für jeden einzelnen Prüfpunkt und für jede Phase (L1, L2, L3) werden die exakten Ströme der Primär- und Sekundärseite mithilfe eines Referenzmessgeräts erfasst. Diese ermittelten Messwertpaare werden in das VBA-Messprotokoll (siehe Abbildung \ref{fig:tabelle_genauigkeit}) übertragen, welches daraus den Fehler berechnet.
+
+Um den Einfluss der Fremdfelder durch die geometrische Anordnung zu untersuchen, wird der Messaufbau anschließend umgebaut. Beispielsweise wird, wie in Abbildung \ref{fig:erwaermungspruefstand_wandler_pos2} gezeigt, die Anordnung für Position 2 realisiert, bei der die mittlere Phase L2 nach vorne verlagert ist. Nach dem Umbau wird der gesamte Genauigkeits-Messzyklus für diese Position wiederholt. Dieser Prozess wird für alle zu untersuchenden Wandler und geometrischen Anordnungen iteriert.
+
+
 
 \subsection{Ergebnisse}
 \label{sec:ergebnisse}
 % Hier Inhalt einfügen
 
-In der Abbildung \ref{fig:simulation_aufbau} kann man den groben Aufbau der Simulation betrachten, welcher sich in drei Kategorien gliedert einmal in erstellung der Bauteile, erstellung der Simulation und die Visuelle darstellung der Ergebinsse aus der Simulation.
+Der grobe Aufbau der Simulation gliedert sich in drei Kategorien: die Erstellung der Bauteile, die Durchführung der Simulation und die visuelle Darstellung der Simulationsergebnisse.

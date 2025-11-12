@@ -1,64 +1,83 @@
 % =============================================================================
 % DECKBLATT (00_deckblatt.tex)
 % -----------------------------------------------------------------------------
-% Dies ist die Titelseite deiner Arbeit. Sie verwendet die globalen
-% Befehle aus 'befehle.tex', um die Informationen dynamisch einzufügen.
+% NEUE, KOMPAKTERE VERSION (ohne Adressen, mit \vfill)
 % =============================================================================
 
 \begin{titlepage}
 
-	\hspace{-1.0cm}
-	\begin{tabular}{p{8.0cm} p{8.0cm}}
-		% KORRIGIERT: Der Pfad zum Logo wurde an die neue Ordnerstruktur angepasst.
-		\includegraphics[width = 6.0cm]{03_Ressourcen/Logo/Technik.png} & % Logo
-		\parbox[b]{8.0cm}{
-		{\large  Fachbereich Technik }                                    \\ % Fachbereich
-		{\large  Abteilung Elektrotechnik und Informatik } % Abteilung
-		}                                                                 \\
-		\\
-		\hline
+	% === HEADER: HOCHSCHULE (links) & FIRMA (rechts) ===
+	% Kompakter, ohne Adressen
+	\noindent
+	\begin{tabular}{p{0.5\textwidth} p{0.5\textwidth}}
+
+		% --- LINKE SPALTE: HOCHSCHULE ---
+		\parbox[t]{\linewidth}{
+		\raggedright
+		\includegraphics[width = 6.0cm]{\hochschullogo}
+		\vspace{0.25cm}
+		} &
+
+		% --- RECHTE SPALTE: FIRMA ---
+		\parbox[t]{\linewidth}{
+			\raggedleft
+			\includegraphics[width = 7.0cm]{\firmenlogo} % Ggf. Breite anpassen
+			\vspace{0.25cm}
+		}                       \\
+
+		% --- TRENELINIE ---
+		\noalign{\vspace{0.5cm}} % Weniger Abstand
+		\multicolumn{2}{p{\textwidth}}{\hrule}
 	\end{tabular}
-	%
+
+
+	% === HAUPTTEIL (Zentriert) ===
+	% Dieser Block zentriert nur noch den Titel-Block
 	\begin{center}
 
-		\vspace{2.5cm}
-		% KORRIGIERT: Zeilenumbruch \\ entfernt, da \semester leer ist
+		\vspace{1cm} % Fester Abstand von oben, ggf. anpassen
+
 		\LARGE{\textsc{\praktikumstitel}}
 		\ifx\semester\empty\else\LARGE{\textsc{\semester}}\fi
 
-		\vspace{2cm}%
+		\vspace{1cm}%
 		\ifx\versuchsnummer\empty\else\LARGE{\textsc{\versuchsnummer}}\fi
 		\LARGE{\versuchstitel}
 
-		\vspace{2cm}%
+		\vspace{1cm}%
 		\large
 
-		% KORRIGIERT: Zeilenumbrüche entfernt, da \gruppe leer ist
-		\ifx\gruppe\empty\else\gruppe\fi
 		\studiengang
 		\vspace{0.5cm}
 
 		Vorgelegt von\\
+		\vspace{0.2cm}
 
-		\begin{table}[!ht]
-			\centering
-			\begin{tabular}{rll}
-				% KORRIGIERT: Leere erste Zeile entfernt
-				\vornameStudZwei & \nachnameStudZwei & \matrikelnummerStudZwei % Studierender 2 (global definiert)
-			\end{tabular}
-		\end{table}
-
-
-		\vspace{1cm}
-		Emden, \today % Ort und Datum
-
-		\vspace{1cm}%
-		Betreut von\\ \ \\ % Einleitung Betreuer
-		\betreuerEins\\ % Betreuer 1 (global definiert)
-		\betreuerZwei\\ % Betreuer 2 (global definiert)
-		\betreuerDrei\\ % Betreuer 3 (neu hinzugefügt)
-		\betreuerVier
+		% Diese Zeile stellt sicher, dass Vor- und Nachname 
+		% mit Leerzeichen getrennt werden.
+		\large \vornameStudZwei \nachnameStudZwei \\
+		\normalsize Matrikelnummer: \matrikelnummerStudZwei
 
 	\end{center}
-	\normalsize
+
+	% === FUSSBEREICH (Am Seitenende ausgerichtet) ===
+	% \vfill fügt dehnbaren Leerraum ein und schiebt alles danach
+	% an den unteren Rand der Seite.
+	\vfill
+
+	% Eigene Umgebung für den Fußbereich, um ihn zu zentrieren
+	\begin{center}
+		Emden, \today % Ort und Datum
+
+		\vspace{1cm} % Abstand
+
+		Betreut von\\ \ \\
+		\betreuerEins\\
+		\betreuerZwei\\
+		\betreuerDrei\\
+		\betreuerVier
+	\end{center}
+
+	\vspace{0.5cm} % Kleiner Puffer ganz am Ende
+
 \end{titlepage}
