@@ -8,55 +8,58 @@
 \section{Analyse der Fremdfeldbeeinflussung von Messstromwandlern}
 \label{chap:projektbericht}
 
-Im Rahmen dieser Praxisphase wird die \gls{fremdfeld}beeinflussung auf \glspl{messstromwandler} im Bereich der \gls{niederspannung} analysiert. Ziel ist es, die physikalischen Ursachen für Messabweichungen, basierend auf dem \gls{induktionsgesetz}, zu untersuchen und Lösungsansätze zur Minimierung dieser Störeinflüsse zu entwickeln.
-
+Im Rahmen dieser Praxisphase wird die Fremdfeldbeeinflussung auf Messstromwandler im Bereich der Niederspannung analysiert.
+Ziel ist es, die physikalischen Ursachen für Messabweichungen, basierend auf dem Induktionsgesetz, zu untersuchen und Lösungsansätze zur Minimierung dieser Störeinflüsse zu entwickeln.
 \subsection{Motivation}
 \label{sec:motivation}
 
-In modernen \Glspl{niederspannungsschaltanlage} treffen konstruktive Anforderungen an eine kompakte Bauweise auf hohe Betriebsströme. Die daraus resultierende kompakte Anordnung der \glspl{sammelschiene} führt dazu, dass die starken magnetischen Wechselfelder der stromführenden \glspl{leiter} auf benachbarte \glspl{messstromwandler} koppeln. Diese \gls{fremdfeld}beeinflussung ist eine signifikante Ursache für Messfehler, die Einhaltung der \gls{genauigkeitsklasse} beeinträchtigen kann und somit für Verrechnungszwecke nicht mehr zulässig ist. Besonders kritisch ist diese Kopplung für den Wandler der mittleren Phase \acrshort{l2}, da dieser von den Feldern der beiden äußeren Phasen \acrshort{l1} und \acrshort{l3} beeinflusst wird.
-
+In modernen Niederspannungsschaltanlagen treffen konstruktive Anforderungen an eine kompakte Bauweise auf hohe Betriebsströme.
+Die daraus resultierende kompakte Anordnung der Sammelschienen führt dazu, dass die starken magnetischen Wechselfelder der stromführenden Leiter auf benachbarte Messstromwandler koppeln.
+Diese Fremdfeldbeeinflussung ist eine signifikante Ursache für Messfehler, die Einhaltung der Genauigkeitsklasse beeinträchtigen kann und somit für Verrechnungszwecke nicht mehr zulässig ist.
+Besonders kritisch ist diese Kopplung für den Wandler der mittleren Phase L2, da dieser von den Feldern der beiden äußeren Phasen L1 und L3 beeinflusst wird.
 \subsection{Vorgehen}
 \label{sec:vorgehen}
 
-Um die gegenseitige Beeinflussung der Magnetfelder zu untersuchen, wurde die Open-Source-Software \gls{femm} eingesetzt. Mit dieser lassen sich verschiedene elektrotechnische Problemstellungen wie magnetische, elektrostatische, stromfluss oder thermische Phänomene simulieren. Da die Software jedoch ausschließlich stationäre Probleme in zwei Dimensionen berechnen kann, wurde für die Analyse der Magnetfeldeinkopplung in die \glspl{messstromwandler} eine ergänzende Software zur Simulation dynamischer Vorgänge entwickelt.
-
-Die messtechnische Untersuchung der \glspl{messstromwandler} findet im \gls{erwaermungspruefstand} statt. Sie gliedert sich in zwei Bereiche: Zuerst werden die internen Parameter mittels \gls{acv-verfahren}- und \gls{dcv-verfahren}-Messungen ermittelt. Anschließend erfolgt die Genauigkeitsmessung unter Betriebsbedingungen mit den jeweiligen \glspl{nennstrom} der Wandler.
-
+Um die gegenseitige Beeinflussung der Magnetfelder zu untersuchen, wurde die Open-Source-Software \gls{femm} eingesetzt.
+Mit dieser lassen sich verschiedene elektrotechnische Problemstellungen wie magnetische, elektrostatische, stromfluss oder thermische Phänomene simulieren.
+Da die Software jedoch ausschließlich stationäre Probleme in zwei Dimensionen berechnen kann, wurde für die Analyse der Magnetfeldeinkopplung in die Messstromwandler eine ergänzende Software zur Simulation dynamischer Vorgänge entwickelt.
+Die messtechnische Untersuchung der Messstromwandler findet im \gls{erwaermungspruefstand} statt. Sie gliedert sich in zwei Bereiche: Zuerst werden die internen Parameter mittels ACV-Messverfahren- und DCV-Messverfahren-Messungen ermittelt.
+Anschließend erfolgt die Genauigkeitsmessung unter Betriebsbedingungen mit den jeweiligen Nennströmen der Wandler.
 \subsubsection{Vorbereitung}
 \label{sec:vorgehen:vorbereitung}
 
-Als Vorbereitung für die messtechnischen und simulativen Untersuchungen wurden \glspl{messstromwandler} verschiedener Hersteller mit unterschiedlichen \glspl{nennstrom} beschafft.
-
-Parallel dazu erfolgte eine umfassende Einarbeitung in die theoretischen Grundlagen der Messwandlertechnik und der \gls{fremdfeld}problematik. Dies umfasste die Recherche und Analyse relevanter Fachartikel und Bücher. Ergänzend wurden erste analytische Berechnungen zur Magnetfeldeinkopplung mittels \gls{matlab} durchgeführt.
-
+Als Vorbereitung für die messtechnischen und simulativen Untersuchungen wurden Messstromwandler verschiedener Hersteller mit unterschiedlichen Nennströmen beschafft.
+Parallel dazu erfolgte eine umfassende Einarbeitung in die theoretischen Grundlagen der Messwandlertechnik und der Fremdfeldproblematik.
+Dies umfasste die Recherche und Analyse relevanter Fachartikel und Bücher. Ergänzend wurden erste analytische Berechnungen zur Magnetfeldeinkopplung mittels MATLAB durchgeführt.
 \subsection{Erwärmungsprüfstand}
 \label{sec:erwaermungspruefstand}
 
-Der \gls{erwaermungspruefstand} (siehe Abbildung \ref{fig:erwaermungspruefstand_ohne_wandler}) ist die zentrale Messeinrichtung für dieses Projekt. Obwohl sein primärer Zweck, wie der Name andeutet, die thermische Analyse von \glspl{niederspannungsschaltanlage} nach \acrshort{vde}-Norm ist, liegt sein entscheidender Vorteil für diese Untersuchung in einer anderen Eigenschaft: Er kann die für den Realbetrieb typischen, sehr hohen \glspl{nennstrom} bis zu mehreren Kiloampere erzeugen.
-
-Der Prüfstand nutzt einen Hochstromtransformator, um die benötigten Ströme bei sehr geringer Spannung (typischerweise < 10 V) in das \gls{sammelschiene}-System einzuspeisen. Für die Analyse der \gls{fremdfeld}beeinflussung ist dies die ideale Voraussetzung: Die hohen Ströme erzeugen die realitätsnahen, starken Magnetfelder, deren Kopplung auf die \glspl{messstromwandler} untersucht werden soll.
-
-Wie in Abschnitt \ref{sec:messung:messaufbau} detailliert beschrieben, wurde für die Messungen ein spezielles, modulares Kupferschienensystem im Prüfstand installiert. Dieses System erlaubt es, die \glspl{messstromwandler} schnell zu montieren und verschiedene geometrische Anordnungen (insbesondere unterschiedliche \glspl{phasenmittelabstand}) zu realisieren, um deren Einfluss auf die Messgenauigkeit systematisch zu untersuchen.
-
-
+Der \gls{erwaermungspruefstand} (siehe Abbildung \ref{fig:erwaermungspruefstand_ohne_wandler}) ist die zentrale Messeinrichtung für dieses Projekt.
+Obwohl sein primärer Zweck, wie der Name andeutet, die thermische Analyse von Niederspannungsschaltanlagen nach VDE-Norm ist, liegt sein entscheidender Vorteil für diese Untersuchung in einer anderen Eigenschaft: Er kann die für den Realbetrieb typischen, sehr hohen Nennströme bis zu mehreren Kiloampere erzeugen.
+Der Prüfstand nutzt einen Hochstromtransformator, um die benötigten Ströme bei sehr geringer Spannung (typischerweise < 10 V) in das Sammelschienen-System einzuspeisen.
+Für die Analyse der Fremdfeldbeeinflussung ist dies die ideale Voraussetzung: Die hohen Ströme erzeugen die realitätsnahen, starken Magnetfelder, deren Kopplung auf die Messstromwandler untersucht werden soll.
+Wie in Abschnitt \ref{sec:messung:messaufbau} detailliert beschrieben, wurde für die Messungen ein spezielles, modulares Kupferschienensystem im Prüfstand installiert.
+Dieses System erlaubt es, die Messstromwandler schnell zu montieren und verschiedene geometrische Anordnungen (insbesondere unterschiedliche Phasenmittelabstände) zu realisieren, um deren Einfluss auf die Messgenauigkeit systematisch zu untersuchen.
 \subsection{Simulation}
 \label{sec:simulation}
 
-Für die Simulation wurden verschiedene Ansätze verfolgt. Zunächst kam ein in \gls{matlab} implementiertes Skript zum Einsatz, das die Magnetfelder auf Grundlage des \gls{biot-savart}-Gesetzes berechnete. Schnell zeigte sich jedoch, dass dieser Ansatz die physikalische Realität nur unzureichend abbildete. Daher wurde eine alternative Methode erforderlich.
-
+Für die Simulation wurden verschiedene Ansätze verfolgt. Zunächst kam ein in MATLAB implementiertes Skript zum Einsatz, das die Magnetfelder auf Grundlage des Biot-Savart-Gesetzes berechnete.
+Schnell zeigte sich jedoch, dass dieser Ansatz die physikalische Realität nur unzureichend abbildete. Daher wurde eine alternative Methode erforderlich.
 Nach einer ausführlichen Recherche geeigneter, kostenfreier Open-Source-Software für Magnetfeldsimulationen fiel die Wahl auf \gls{femm} (Finite Element Method Magnetics).
-
-\Gls{femm} ist ein Programm, das magnetische Probleme mithilfe der \gls{fem} (\acrshort{fem}) löst. Der entscheidende Vorteil gegenüber dem \gls{biot-savart}-Ansatz liegt darin, dass \gls{femm} nicht nur komplexe Leitergeometrien, sondern auch die nichtlinearen Materialeigenschaften ferromagnetischer Werkstoffe (z. B. \gls{bh-kennlinie} und \gls{magnetische-saettigung}) berücksichtigt. Genau diese Eigenschaften wurden beim reinen \gls{biot-savart}-Modell vernachlässigt, was zu deutlichen Abweichungen führte. Daher wurde das Modell in \gls{femm} neu aufgebaut, um die Sättigungseffekte realitätsnah abzubilden.
-
+\Gls{femm} ist ein Programm, das magnetische Probleme mithilfe der FEM löst.
+Der entscheidende Vorteil gegenüber dem Biot-Savart-Ansatz liegt darin, dass \gls{femm} nicht nur komplexe Leitergeometrien, sondern auch die nichtlinearen Materialeigenschaften ferromagnetischer Werkstoffe (z. B. B(H)-Kennlinie und magnetische Sättigung) berücksichtigt.
+Genau diese Eigenschaften wurden beim reinen Biot-Savart-Modell vernachlässigt, was zu deutlichen Abweichungen führte.
+Daher wurde das Modell in \gls{femm} neu aufgebaut, um die Sättigungseffekte realitätsnah abzubilden.
 \subsubsection{Maßgeschneiderte Simulationsumgebung}
 \label{sec:simulation:software}
 
-Für die spezifischen Anforderungen des Messaufbaus wurde auf Basis von \gls{femm} eine maßgeschneiderte Softwarelösung entwickelt, die die \gls{fremdfeld}beeinflussung gezielt abbildet.
-Diese Lösung stellt eine Weboberfläche (siehe Abbildung \ref{fig:weboberflaeche}) bereit, über die sich die Simulationen definieren, parametrieren und starten lassen (siehe Abbildung \ref{fig:weboberflaeche_einstellungen}). Die Oberfläche dient als einheitliche Vorlage (Template) und ermöglicht die standardisierte Erstellung von Simulationsmodellen für verschiedene Wandlertypen und Sammelschienenanordnungen.
-
+Für die spezifischen Anforderungen des Messaufbaus wurde auf Basis von \gls{femm} eine maßgeschneiderte Softwarelösung entwickelt, die die Fremdfeldbeeinflussung gezielt abbildet.
+Diese Lösung stellt eine Weboberfläche (siehe Abbildung \ref{fig:weboberflaeche}) bereit, über die sich die Simulationen definieren, parametrieren und starten lassen (siehe Abbildung \ref{fig:weboberflaeche_einstellungen}).
+Die Oberfläche dient als einheitliche Vorlage (Template) und ermöglicht die standardisierte Erstellung von Simulationsmodellen für verschiedene Wandlertypen und Sammelschienenanordnungen.
 Da \Gls{femm} ausschließlich stationäre Fälle betrachtet, implementiert die Hilfssoftware ein \gls{quasi-stationaer}, um die dynamischen Vorgänge anzunähern.
-Zu diskreten Zeitpunkten $t_n$ innerhalb einer Netzperiode berechnet die Hilfssoftware die jeweiligen Momentanwerte der Phasenströme $i_{L1}(t_n)$, $i_{L2}(t_n)$ und $i_{L3}(t_n)$. Diese Werte werden automatisiert an \gls{femm} übergeben, das für jeden Zeitschritt ein stationäres Magnetfeldproblem löst. Durch die Aneinanderreihung der Einzelergebnisse – insbesondere des magnetischen Flusses $\Psi(t_n)$ im Wandlerkern – lässt sich der zeitliche Verlauf über eine volle Periode rekonstruieren.
-
+Zu diskreten Zeitpunkten $t_n$ innerhalb einer Netzperiode berechnet die Hilfssoftware die jeweiligen Momentanwerte der Phasenströme $i_{L1}(t_n)$, $i_{L2}(t_n)$ und $i_{L3}(t_n)$.
+Diese Werte werden automatisiert an \gls{femm} übergeben, das für jeden Zeitschritt ein stationäres Magnetfeldproblem löst.
+Durch die Aneinanderreihung der Einzelergebnisse – insbesondere des magnetischen Flusses $\Psi(t_n)$ im Wandlerkern – lässt sich der zeitliche Verlauf über eine volle Periode rekonstruieren.
 \einfuegenBildGross{03_Ressourcen/Bilder/website_Simulations-Vorschau.png}{Weboberfläche der Simulationssoftware mit Vorschau des Modells}{fig:weboberflaeche}
 
 \einfuegenBildGross{03_Ressourcen/Bilder/website_Simulations-einstellungen.png}{Weboberfläche der Simulationssoftware mit Einstellmöglichkeiten für die Simulation}{fig:weboberflaeche_einstellungen}
@@ -65,24 +68,25 @@ Zu diskreten Zeitpunkten $t_n$ innerhalb einer Netzperiode berechnet die Hilfsso
 \subsubsection{Detaillierter Modellaufbau}
 \label{sec:simulation:modellaufbau}
 
-Der detaillierte Modellaufbau in \gls{femm} erfolgte in einem zweidimensionalen Querschnitt, der die Anordnung der \glspl{sammelschiene} und des \gls{messstromwandler} abbildet:
+Der detaillierte Modellaufbau in \gls{femm} erfolgte in einem zweidimensionalen Querschnitt, der die Anordnung der Sammelschienen und des Messstromwandlers abbildet:
 
 \begin{itemize}
-    \item Geometrie: Die drei Phasenleiter wurden entsprechend ihrer realen Querschnittsabmessungen (z. B. 100 mm × 10 mm) und ihres Mittenabstands modelliert. Ebenso wurde der Ringkern des \gls{messstromwandler} mit seinem exakten Innen- und Außendurchmesser sowie seiner Position relativ zu den Leitern nachgebildet.
-    \item Materialien: Den \Glspl{leiter} wurde Kupfer mit seiner spezifischen elektrischen Leitfähigkeit zugewiesen, der Umgebungsraum als Luft ($\mu_r = 1$) definiert. Der ferromagnetische Wandlerkern erhielt eine nichtlineare \gls{bh-kennlinie} aus der FEMM-Materialbibliothek (z. B. M-19 Steel), um das \gls{magnetische-saettigung}sverhalten realitätsnah zu erfassen.
+    \item Geometrie: Die drei Phasenleiter wurden entsprechend ihrer realen Querschnittsabmessungen (z. B. 100 mm × 10 mm) und ihres Mittenabstands modelliert.
+Ebenso wurde der Ringkern des Messstromwandlers mit seinem exakten Innen- und Außendurchmesser sowie seiner Position relativ zu den Leitern nachgebildet.
+    \item Materialien: Den Leitern wurde Kupfer mit seiner spezifischen elektrischen Leitfähigkeit zugewiesen, der Umgebungsraum als Luft ($\mu_r = 1$) definiert.
+Der ferromagnetische Wandlerkern erhielt eine nichtlineare B(H)-Kennlinie aus der FEMM-Materialbibliothek (z. B. M-19 Steel), um das Sättigungsverhalten realitätsnah zu erfassen.
 \end{itemize}
 
 \subsection{Messung}
 \label{sec:messung}
 
-Bei der Messung am \gls{erwaermungspruefstand} sollen die \glspl{messstromwandler} in verschiedenen geometrischen Anordnungen auf ihre Genauigkeit hin überprüft werden. Die Anordnung der Kupferschienen wurde für diese Messungen speziell angefertigt, wodurch sich die \glspl{messstromwandler} möglichst einfach und schnell in den verschiedenen Positionen vermessen lassen.
-
-
+Bei der Messung am \gls{erwaermungspruefstand} sollen die Messstromwandler in verschiedenen geometrischen Anordnungen auf ihre Genauigkeit hin überprüft werden.
+Die Anordnung der Kupferschienen wurde für diese Messungen speziell angefertigt, wodurch sich die Messstromwandler möglichst einfach und schnell in den verschiedenen Positionen vermessen lassen.
 \subsubsection{Messaufbau}
 \label{sec:messung:messaufbau}
 
-Ziel der Messungen ist es zu überprüfen, ob die \glspl{messstromwandler} durch geometrische anpassung weiterhin unter dem Einfluss von \glspl{fremdfeld}, die Anforderungen an die \gls{genauigkeitsklasse} der DIN-Norm 61869-2 einhalten. Die Grenzwerte für die Übersetzungsmessabweichung sind dazu in Tabelle~\ref{tab:grenzwerte_wandler_reduziert} dargestellt.
-
+Ziel der Messungen ist es zu überprüfen, ob die Messstromwandler durch geometrische Anpassung weiterhin unter dem Einfluss von Fremdfeldern, die Anforderungen an die Genauigkeitsklasse der DIN-Norm 61869-2 einhalten.
+Die Grenzwerte für die Übersetzungsmessabweichung sind dazu in Tabelle~\ref{tab:grenzwerte_wandler_reduziert} dargestellt.
 \begin{table}[H]
     \centering
     \caption{Grenzwerte für Übersetzungsmessabweichung für Stromwandler für Messzwecke (Klassen 0,1 bis 1) nach DIN EN 61869-2}
@@ -90,116 +94,125 @@ Ziel der Messungen ist es zu überprüfen, ob die \glspl{messstromwandler} durch
     \begin{tabular}{lcccc}
         \toprule
         \multirow{3}{*}{Genauigkeitsklasse} & \multicolumn{4}{c}{Übersetzungsmessabweichung}                                     \\
-                                            & \multicolumn{4}{c}{$\pm \%$ bei Strom (\% von Bemessungsstrom)}                    \\
+                                             & \multicolumn{4}{c}{$\pm \%$ bei Strom (\% von Bemessungsstrom)}                    \\
         \cmidrule(lr){2-5}
-                                            & 5                                                               & 20   & 100 & 120 \\
+                                             & 5                                                               & 20   & 100 & 120 \\
         \midrule
-        0,1                                 & 0,4                                                             & 0,2  & 0,1 & 0,1 \\
-        0,2                                 & 0,75                                                            & 0,35 & 0,2 & 0,2 \\
-        0,5                                 & 1,5                                                             & 0,75 & 0,5 & 0,5 \\
-        1                                   & 3,0                                                             & 1,5  & 1,0 & 1,0 \\
+        0,1                                  & 0,4                                                             & 0,2  & 0,1 & 0,1 \\
+        0,2                                  & 0,75                                                            & 0,35 & 0,2 & 0,2 \\
+        0,5                                  & 1,5                                                             & 0,75 & 0,5 & 0,5 \\
+        1                                   & 3,0                                                              & 1,5  & 1,0 & 1,0 \\
         \bottomrule
     \end{tabular}
 \end{table}
 
-Zu diesem Zweck zeigt Abbildung \ref{fig:erwaermungspruefstand_ohne_wandler} das spezialisierte Kupferschienensystem des \gls{erwaermungspruefstand}. Dieser Aufbau ermöglicht die Simulation von zwei verschiedenen \glspl{phasenmittelabstand}. Der \gls{phasenmittelabstand} bezeichnet den Abstand zwischen den Außenleitern. Dieses Maß wird durch den Hauptschalter bestimmt, an dem die Kupferschienen befestigt sind (im \gls{erwaermungspruefstand} ist kein Hauptschalter verbaut).
-
+Zu diesem Zweck zeigt Abbildung \ref{fig:erwaermungspruefstand_ohne_wandler} das spezialisierte Kupferschienensystem des \gls{erwaermungspruefstand}.
+Dieser Aufbau ermöglicht die Simulation von zwei verschiedenen Phasenmittelabständen. Der Phasenmittelabstand bezeichnet den Abstand zwischen den Außenleitern.
+Dieses Maß wird durch den Hauptschalter bestimmt, an dem die Kupferschienen befestigt sind (im \gls{erwaermungspruefstand} ist kein Hauptschalter verbaut).
 Das abgebildete System ist zweigeteilt:
 \begin{itemize}
-    \item Links im Bild ist das Schienensystem für Ströme von 630 A bis 1250 A mit einem \gls{phasenmittelabstand} von 70 mm zu sehen.
-    \item Rechts im Bild befindet sich das System für Ströme von 630 A bis 3200 A mit einem \gls{phasenmittelabstand} von 90 mm.
+    \item Links im Bild ist das Schienensystem für Ströme von 630 A bis 1250 A mit einem Phasenmittelabstand von 70 mm zu sehen.
+    \item Rechts im Bild befindet sich das System für Ströme von 630 A bis 3200 A mit einem Phasenmittelabstand von 90 mm.
 \end{itemize}
-Ein drittes Schienensystem (für 3200 A bis 5000 A mit 210 mm \gls{phasenmittelabstand}) ist nicht dargestellt, da es gesondert verbaut werden muss.
-
-Um die \glspl{messstromwandler} auf dem Schienensystem zu installieren, muss die Kurzschlussbrücke entfernt werden. Anschließend können die Wandler von unten auf die Schienen der jeweiligen Phasen geschoben werden.
-
+Ein drittes Schienensystem (für 3200 A bis 5000 A mit 210 mm Phasenmittelabstand) ist nicht dargestellt, da es gesondert verbaut werden muss.
+Um die Messstromwandler auf dem Schienensystem zu installieren, muss die Kurzschlussbrücke entfernt werden.
+Anschließend können die Wandler von unten auf die Schienen der jeweiligen Phasen geschoben werden.
 \einfuegenBildMittel{03_Ressourcen/Bilder/erwaermungspruefstand_abgang_ohne_wandler.png}{Messaufbau des Erwärmungsprüfstands ohne Messstromwandler}{fig:erwaermungspruefstand_ohne_wandler}
 
-In der folgenden Abbildung \ref{fig:erwaermungspruefstand_wandler_pos2} ist die Position 2 realisiert. Bei dieser Anordnung wird die Phase \acrshort{l2} durch die Installation einer zusätzlichen Kupferschiene mit einem Winkel nach vorne verlagert.
-
+In der folgenden Abbildung \ref{fig:erwaermungspruefstand_wandler_pos2} ist die Position 2 realisiert.
+Bei dieser Anordnung wird die Phase L2 durch die Installation einer zusätzlichen Kupferschiene mit einem Winkel nach vorne verlagert.
 \einfuegenBildGross{03_Ressourcen/Bilder/erwaermungspruefstand_abgang_mit_wandler_pos2.png}{Messaufbau mit installierten Messstromwandlern in Position 2 (Phase L2 nach vorne verlagert)}{fig:erwaermungspruefstand_wandler_pos2}
 
-Nach der Montage am Schienensystem werden die \glspl{messstromwandler} verdrahtet. Dafür werden die Anschlüsse der Sekundärwicklung auf spezielle \glspl{wandler-kurzschlussklemme} geführt. Diese Klemmen ermöglichen ein sicheres Kurzschließen der Sekundärseite, bevor ein Messgerät entfernt oder getauscht wird. Zudem bieten diese Klemmen die Möglichkeit, Messgeräte direkt über Standard-Labormessleitungen anzuschließen.
-
-Dieser Schritt ist aus Sicherheitsgründen essenziell: Ein \gls{messstromwandler} darf niemals auf der Sekundärseite offen betrieben werden. Im Leerlauf würden an den offenen Klemmen extrem hohe und gefährliche Spannungen entstehen. Diese lebensgefährlichen Spannungsspitzen können die Isolation des Wandlers zerstören und stellen eine ernste Gefahr durch Stromschlag dar.
-
-Ein weiterer wichtiger Aspekt ist die \gls{buerde} des Wandlers. \Glspl{messstromwandler} besitzen eine definierte Nennbürde (meist in VA angegeben), die im Betrieb eingehalten werden muss, damit der Wandler korrekte Messergebnisse innerhalb seiner \gls{genauigkeitsklasse} liefert.
+Nach der Montage am Schienensystem werden die Messstromwandler verdrahtet.
+Dafür werden die Anschlüsse der Sekundärwicklung auf spezielle \glspl{wandler-kurzschlussklemme} geführt.
+Diese Klemmen ermöglichen ein sicheres Kurzschließen der Sekundärseite, bevor ein Messgerät entfernt oder getauscht wird.
+Zudem bieten diese Klemmen die Möglichkeit, Messgeräte direkt über Standard-Labormessleitungen anzuschließen.
+Dieser Schritt ist aus Sicherheitsgründen essenziell: Ein Messstromwandler darf niemals auf der Sekundärseite offen betrieben werden.
+Im Leerlauf würden an den offenen Klemmen extrem hohe und gefährliche Spannungen entstehen.
+Diese lebensgefährlichen Spannungsspitzen können die Isolation des Wandlers zerstören und stellen eine ernste Gefahr durch Stromschlag dar.
+Ein weiterer wichtiger Aspekt ist die Bürde des Wandlers. Messstromwandler besitzen eine definierte Nennbürde (meist in VA angegeben), die im Betrieb eingehalten werden muss, damit der Wandler korrekte Messergebnisse innerhalb seiner Genauigkeitsklasse liefert.
 Das Ersatzschaltbild in Abbildung \ref{fig:esb_buerde} visualisiert die Komponenten der sekundärseitigen Gesamtimpedanz, die sich aus den Leitungswiderständen ($R_{Kabel}$), dem Messgerät ($A$) und dem, falls nötig, zusätzlichen \gls{kompensationswiderstand} ($R_{Kompensation}$) zusammensetzt.
-
 \einfuegenBildGross{03_Ressourcen/Bilder/ESB_Messwandler.pdf}{Ersatzschaltbild der sekundärseitigen Bürde (Kabel, Messgerät und ggf. Kompensation)}{fig:esb_buerde}
 
-Früher waren analoge Dreheisenmesswerke der Standard zur Strommessung. Da diese Messwerke eine signifikante interne \gls{buerde} (Eigenverbrauch) aufweisen, wurden die Wandler entsprechend für eine höhere Ausgangsbürde ausgelegt. Heutzutage erfolgen Messungen primär mittels digitaler Messgeräte. Diese sind im Strommessbereich extrem niederohmig (die Impedanz liegt oft deutlich unter 1 $\Omega$).
-
-Wird ein älterer Wandler, der für eine hohe \gls{buerde} ausgelegt ist, mit einem modernen, niederohmigen Messgerät betrieben, wird die Nennbürde nicht mehr erreicht. Man spricht von einer \gls{unterbuerdung}. Dieser Betriebszustand führt zu Messfehlern. Um dies zu kompensieren und den Wandler in seinem korrekten Arbeitsbereich zu betreiben, müssen zusätzliche \glspl{kompensationswiderstand} in den Sekundärkreis geschaltet werden (siehe in Abbildung \ref{fig:esb_buerde}), um die Gesamtimpedanz auf die Nennbürde des Wandlers zu erhöhen.
-
+Früher waren analoge Dreheisenmesswerke der Standard zur Strommessung.
+Da diese Messwerke eine signifikante interne Bürde (Eigenverbrauch) aufweisen, wurden die Wandler entsprechend für eine höhere Ausgangsbürde ausgelegt.
+Heutzutage erfolgen Messungen primär mittels digitaler Messgeräte. Diese sind im Strommessbereich extrem niederohmig (die Impedanz liegt oft deutlich unter 1 $\Omega$).
+Wird ein älterer Wandler, der für eine hohe Bürde ausgelegt ist, mit einem modernen, niederohmigen Messgerät betrieben, wird die Nennbürde nicht mehr erreicht.
+Man spricht von einer \gls{unterbuerdung}. Dieser Betriebszustand führt zu Messfehlern.
+Um dies zu kompensieren und den Wandler in seinem korrekten Arbeitsbereich zu betreiben, müssen zusätzliche \glspl{kompensationswiderstand} in den Sekundärkreis geschaltet werden (siehe in Abbildung \ref{fig:esb_buerde}), um die Gesamtimpedanz auf die Nennbürde des Wandlers zu erhöhen.
 \subsubsection{Messprotokoll}
 \label{sec:messung:messprotokoll}
 
-Zur systematischen Erfassung und späteren Auswertung der Messdaten ist ein strukturiertes Messprotokoll erforderlich. Die Herausforderung besteht in der repetitiven Art der Genauigkeitsmessung: Für eine Vielzahl unterschiedlicher \glspl{messstromwandler} mit verschiedenen \glspl{nennstrom} müssen die identischen Messprozeduren (siehe Tabelle \ref{tab:grenzwerte_wandler_reduziert}) durchgeführt und protokolliert werden.
-
-Ein erster Ansatz bestand darin, eine standardisierte Tabellenvorlage in Excel zu erstellen. Diese Vorlage wurde anschließend für jeden zu messenden Wandler manuell kopiert. Diese Methode erwies sich jedoch schnell als unpraktikabel und fehleranfällig. Die wesentlichen Nachteile waren:
+Zur systematischen Erfassung und späteren Auswertung der Messdaten ist ein strukturiertes Messprotokoll erforderlich.
+Die Herausforderung besteht in der repetitiven Art der Genauigkeitsmessung: Für eine Vielzahl unterschiedlicher Messstromwandler mit verschiedenen Nennströmen müssen die identischen Messprozeduren (siehe Tabelle \ref{tab:grenzwerte_wandler_reduziert}) durchgeführt und protokolliert werden.
+Ein erster Ansatz bestand darin, eine standardisierte Tabellenvorlage in Excel zu erstellen.
+Diese Vorlage wurde anschließend für jeden zu messenden Wandler manuell kopiert.
+Diese Methode erwies sich jedoch schnell als unpraktikabel und fehleranfällig.
+Die wesentlichen Nachteile waren:
 
 \begin{itemize}
     \item Mangelnde Wartbarkeit: Nachträgliche Änderungen oder Erweiterungen an der Vorlage (z.B. eine zusätzliche Berechnungsspalte) mussten mühselig in jeder einzelnen, bereits kopierten Datei manuell nachgepflegt werden.
     \item Schlechte Datenvergleichbarkeit: Ein direkter Vergleich der Messwerte verschiedener Wandler war nicht ohne Umwege (z.B. erneutes manuelles Zusammenkopieren) möglich, da die Daten dezentral in separaten Dateien vorlagen.
 \end{itemize}
 
-Aus diesen Gründen wurde ein zentralisiertes Messprotokoll-Tool in Excel konzipiert und mittels VBA (Visual Basic for Applications) umgesetzt. Dieses Tool trennt die Dateneingabe klar von der Datenspeicherung:
+Aus diesen Gründen wurde ein zentralisiertes Messprotokoll-Tool in Excel konzipiert und mittels VBA (Visual Basic for Applications) umgesetzt.
+Dieses Tool trennt die Dateneingabe klar von der Datenspeicherung:
 
 \begin{itemize}
-    \item Zentrales Dashboard: Eine grafische Oberfläche (Dashboard) dient als zentrale Steuer- und Eingabemaske. Hier kann der zu prüfende \gls{messstromwandler} ausgewählt und neue Messwerte können erfasst werden.
-    \item Datenbank-Struktur: Die Stammdaten der Wandler (z.B. Typ, Hersteller, \gls{nennstrom}) sowie die erfassten Messwerte werden in separaten, als Datenbank fungierenden Tabellenblättern gespeichert.
+    \item Zentrales Dashboard: Eine grafische Oberfläche (Dashboard) dient als zentrale Steuer- und Eingabemaske.
+Hier kann der zu prüfende Messstromwandler ausgewählt und neue Messwerte können erfasst werden.
+    \item Datenbank-Struktur: Die Stammdaten der Wandler (z.B. Typ, Hersteller, Nennstrom) sowie die erfassten Messwerte werden in separaten, als Datenbank fungierenden Tabellenblättern gespeichert.
 \end{itemize}
 
 Dieser Aufbau stellt die Datenkonsistenz sicher, vereinfacht die Wartung des Tools und ermöglicht jederzeit eine globale, vergleichbare Auswertung aller erfassten Messdaten.
-
-
 \einfuegenBildGross{03_Ressourcen/Bilder/tab_dashboard.png}{Dashboard des VBA-Messprotokolls}{fig:tabelle_dashboard}
 
-Das in Abbildung \ref{fig:tabelle_dashboard} gezeigte Dashboard dient als zentrale Startseite. Hier wird zu Beginn der Messung der \gls{messstromwandler} ausgewählt, der geprüft werden soll. Dessen Stammdaten – also Hersteller, \gls{nennstrom}, Nennbürde und \gls{genauigkeitsklasse} – lädt man direkt aus der Datenbank. Nach Abschluss aller Messungen und Berechnungen wird das Dashboard ebenfalls genutzt, um die bearbeiteten Daten wieder zu speichern.
-
+Das in Abbildung \ref{fig:tabelle_dashboard} gezeigte Dashboard dient als zentrale Startseite.
+Hier wird zu Beginn der Messung der Messstromwandler ausgewählt, der geprüft werden soll.
+Dessen Stammdaten – also Hersteller, Nennstrom, Nennbürde und Genauigkeitsklasse – lädt man direkt aus der Datenbank.
+Nach Abschluss aller Messungen und Berechnungen wird das Dashboard ebenfalls genutzt, um die bearbeiteten Daten wieder zu speichern.
 \einfuegenBildGross{03_Ressourcen/Bilder/tab_buerde.png}{Modul zur Bürdenberechnung}{fig:tabelle_buerde}
 
-Das Modul zur \gls{buerde}nberechnung (Abbildung \ref{fig:tabelle_buerde}) ist entscheidend für die korrekte Konfiguration des Messaufbaus, damit die Nennbürde des Wandlers exakt getroffen wird. Man trägt hier die relevanten Parameter des Aufbaus ein: die Kabellänge zum Messgerät, den Leiterquerschnitt und den Innenwiderstand des Messgeräts. Das Tool berechnet daraus die resultierende Kabel- und Messgerätebürde. Vor allem ermittelt es automatisch den notwendigen \gls{kompensationswiderstand} ($R_{komp}$), der eingesetzt werden muss, um eine \gls{unterbuerdung} zu verhindern und die Nennbürde präzise einzustellen.
-
+Das Modul zur Bürdenberechnung (Abbildung \ref{fig:tabelle_buerde}) ist entscheidend für die korrekte Konfiguration des Messaufbaus, damit die Nennbürde des Wandlers exakt getroffen wird.
+Man trägt hier die relevanten Parameter des Aufbaus ein: die Kabellänge zum Messgerät, den Leiterquerschnitt und den Innenwiderstand des Messgeräts.
+Das Tool berechnet daraus die resultierende Kabel- und Messgerätebürde. Vor allem ermittelt es automatisch den notwendigen \gls{kompensationswiderstand} ($R_{komp}$), der eingesetzt werden muss, um eine \gls{unterbuerdung} zu verhindern und die Nennbürde präzise einzustellen.
 \einfuegenBildGross{03_Ressourcen/Bilder/tab_magnetisierungskennline.png}{Modul zur Erfassung der Magnetisierungskennlinie}{fig:tabelle_magnetisierungskennliene}
 
-Das in Abbildung \ref{fig:tabelle_magnetisierungskennliene} dargestellte Modul dient der Erfassung des \gls{magnetische-saettigung}sverhaltens des Wandlerkerns.
-
-Hier trägt man die gemessenen Wertepaare aus Spannung (U) und Magnetisierungsstrom (I) in die Tabelle ein. Zusätzlich werden die geometrischen Kerndaten (z.B. Radius, Höhe, Breite) erfasst, die das Tool für die Auswertung benötigt.
-
-Basierend auf den eingegebenen Daten wird die resultierende U(I)-Kennlinie direkt als Grafik dargestellt, was eine sofortige visuelle Beurteilung des Sättigungsverhaltens erlaubt. Die Tabelle unterstützt die Analyse zusätzlich, indem sie automatisch dabei hilft, den Kniepunkt der Kennlinie zu identifizieren.
-
+Das in Abbildung \ref{fig:tabelle_magnetisierungskennliene} dargestellte Modul dient der Erfassung des Sättigungsverhaltens des Wandlerkerns.
+Hier trägt man die gemessenen Wertepaare aus Spannung (U) und Magnetisierungsstrom (I) in die Tabelle ein.
+Zusätzlich werden die geometrischen Kerndaten (z.B. Radius, Höhe, Breite) erfasst, die das Tool für die Auswertung benötigt.
+Basierend auf den eingegebenen Daten wird die resultierende U(I)-Kennlinie direkt als Grafik dargestellt, was eine sofortige visuelle Beurteilung des Sättigungsverhaltens erlaubt.
+Die Tabelle unterstützt die Analyse zusätzlich, indem sie automatisch dabei hilft, den Kniepunkt der Kennlinie zu identifizieren.
 \einfuegenBildGross{03_Ressourcen/Bilder/tab_genauigkeit.png}{Modul zur Genauigkeitsprüfung}{fig:tabelle_genauigkeit}
 
 Abbildung \ref{fig:tabelle_genauigkeit} zeigt das Kernmodul zur Genauigkeitsprüfung. Es dient der Eingabe und automatisierten Auswertung der Messwerte.
-
-Nach Eingabe der Messwerte für die normativen Prüfpunkte (z.B. 5~\%, 20~\%, 100~\% \acrshort{in}) der Phasen berechnet das Tool den Übersetzungsfehler ($\epsilon$). Die Grafik visualisiert sofort, ob die Messkurve (blau) innerhalb der Grenzlinien (rot) liegt und der Wandler somit die Anforderungen seiner \gls{genauigkeitsklasse} erfüllt.
-
+Nach Eingabe der Messwerte für die normativen Prüfpunkte (z.B. 5~\%, 20~\%, 100~\% $I_N$) der Phasen berechnet das Tool den Übersetzungsfehler ($\epsilon$).
+Die Grafik visualisiert sofort, ob die Messkurve (blau) innerhalb der Grenzlinien (rot) liegt und der Wandler somit die Anforderungen seiner Genauigkeitsklasse erfüllt.
 Die Vorgehensweise zur Ermittlung dieser Messwerte ist in Abschnitt \ref{sec:messung:messdurchfuehrung} beschrieben.
-
-
 \subsubsection{Messdurchführung}
 \label{sec:messung:messdurchfuehrung}
 
-Die Messdurchführung am Prüfstand gliedert sich in zwei Hauptbereiche: die Ermittlung der Wandler-Basiskennwerte (\gls{bh-kennlinie}, Wicklungswiderstand) und die eigentliche Genauigkeitsmessung unter Last und Fremdfeldeinfluss.
-
+Die Messdurchführung am Prüfstand gliedert sich in zwei Hauptbereiche: die Ermittlung der Wandler-Basiskennwerte (B(H)-Kennlinie, Wicklungswiderstand) und die eigentliche Genauigkeitsmessung unter Last und Fremdfeldeinfluss.
 \paragraph{Kennlinien- und Widerstandsmessung}
-Zuerst werden die internen Parameter des Wandlers bestimmt. Für die Aufnahme der \gls{bh-kennlinie} muss die Primärseite des Wandlers unbeschaltet, also im Leerlauf, sein. Die Messung erfolgt sekundärseitig durch das Anlegen einer variablen AC-Spannung, wie in Abbildung \ref{fig:esb_messung_magnetisierungskennlinie} dargestellt. Als Spannungsquelle diente eine regelbare AC-Quelle (Typ: Kocos Artis 600).
-
+Zuerst werden die internen Parameter des Wandlers bestimmt.
+Für die Aufnahme der B(H)-Kennlinie muss die Primärseite des Wandlers unbeschaltet, also im Leerlauf, sein.
+Die Messung erfolgt sekundärseitig durch das Anlegen einer variablen AC-Spannung, wie in Abbildung \ref{fig:esb_messung_magnetisierungskennlinie} dargestellt.
+Als Spannungsquelle diente eine regelbare AC-Quelle (Typ: Kocos Artis 600).
 \einfuegenBildGross{03_Ressourcen/Bilder/esb_messung_magnetisierungskennlinie.pdf}{Messschaltung zur Aufnahme der Magnetisierungskennlinie}{fig:esb_messung_magnetisierungskennlinie}
 
-Parallel zur Sekundärwicklung wird ein hochohmiger Widerstand geschaltet. Dieser Schutzwiderstand begrenzt die beim Ummagnetisieren des Kerns entstehenden Stromspitzen und schützt so die angeschlossenen Messgeräte.
-
-Bei der Messdurchführung wird die Spannung schrittweise von einem niedrigen Wert beginnend erhöht, bis die \gls{magnetische-saettigung} des Kerns deutlich eintritt. Um den Verlauf der Kennlinie im Bereich des Kniepunkts präzise abzubilden, wurden die Spannungsschritte in dieser Region bewusst verkleinert.
-
-Zusätzlich wurde der Widerstand der Sekundärwicklung ($R_{CT}$) bestimmt. Hierfür wurde das Prüfgerät (Kocos Artis 600) als Gleichspannungsquelle konfiguriert. Aus den gemessenen Werten einer stabilen Gleichspannung und des resultierenden Gleichstroms wurde der Widerstand nach dem Ohm'schen Gesetz berechnet.
-
+Parallel zur Sekundärwicklung wird ein hochohmiger Widerstand geschaltet.
+Dieser Schutzwiderstand begrenzt die beim Ummagnetisieren des Kerns entstehenden Stromspitzen und schützt so die angeschlossenen Messgeräte.
+Bei der Messdurchführung wird die Spannung schrittweise von einem niedrigen Wert beginnend erhöht, bis die magnetische Sättigung des Kerns deutlich eintritt.
+Um den Verlauf der Kennlinie im Bereich des Kniepunkts präzise abzubilden, wurden die Spannungsschritte in dieser Region bewusst verkleinert.
+Zusätzlich wurde der Widerstand der Sekundärwicklung ($R_{CT}$) bestimmt. Hierfür wurde das Prüfgerät (Kocos Artis 600) als Gleichspannungsquelle konfiguriert.
+Aus den gemessenen Werten einer stabilen Gleichspannung und des resultierenden Gleichstroms wurde der Widerstand nach dem Ohm'schen Gesetz berechnet.
 \paragraph{Genauigkeitsmessung}
 Nach der Ermittlung der Basiskennwerte erfolgt die zentrale Genauigkeitsmessung am \gls{erwaermungspruefstand}.
-
-Dazu wird der \gls{messstromwandler} zunächst in der ersten geometrischen Anordnung (z.B. Position 1) auf dem Kupferschienensystem montiert. Anschließend werden nacheinander die in der Norm (Tabelle \ref{tab:grenzwerte_wandler_reduziert}) geforderten Prüfströme (z.B. 5~\%, 20~\%, 100~\% und 120~\% des \gls{nennstrom}) auf die Primärseite aufgeprägt.
-
-Für jeden einzelnen Prüfpunkt und für jede Phase (\acrshort{l1}, \acrshort{l2}, \acrshort{l3}) werden die exakten Ströme der Primär- und Sekundärseite mithilfe eines Referenzmessgeräts erfasst. Diese ermittelten Messwertpaare werden in das VBA-Messprotokoll (siehe Abbildung \ref{fig:tabelle_genauigkeit}) übertragen, welches daraus den Fehler berechnet.
-
-Um den Einfluss der \glspl{fremdfeld} durch die geometrische Anordnung zu untersuchen, wird der Messaufbau anschließend umgebaut. Beispielsweise wird, wie in Abbildung \ref{fig:erwaermungspruefstand_wandler_pos2} gezeigt, die Anordnung für Position 2 realisiert, bei der die mittlere Phase \acrshort{l2} nach vorne verlagert ist. Nach dem Umbau wird der gesamte Genauigkeits-Messzyklus für diese Position wiederholt. Dieser Prozess wird für alle zu untersuchenden Wandler und geometrischen Anordnungen iteriert.
+Dazu wird der Messstromwandler zunächst in der ersten geometrischen Anordnung (z.B. Position 1) auf dem Kupferschienensystem montiert.
+Anschließend werden nacheinander die in der Norm (Tabelle \ref{tab:grenzwerte_wandler_reduziert}) geforderten Prüfströme (z.B. 5~\%, 20~\%, 100~\% und 120~\% des Nennstroms) auf die Primärseite aufgeprägt.
+Für jeden einzelnen Prüfpunkt und für jede Phase (L1, L2, L3) werden die exakten Ströme der Primär- und Sekundärseite mithilfe eines Referenzmessgeräts erfasst.
+Diese ermittelten Messwertpaare werden in das VBA-Messprotokoll (siehe Abbildung \ref{fig:tabelle_genauigkeit}) übertragen, welches daraus den Fehler berechnet.
+Um den Einfluss der Fremdfelder durch die geometrische Anordnung zu untersuchen, wird der Messaufbau anschließend umgebaut.
+Beispielsweise wird, wie in Abbildung \ref{fig:erwaermungspruefstand_wandler_pos2} gezeigt, die Anordnung für Position 2 realisiert, bei der die mittlere Phase L2 nach vorne verlagert ist.
+Nach dem Umbau wird der gesamte Genauigkeits-Messzyklus für diese Position wiederholt.
+Dieser Prozess wird für alle zu untersuchenden Wandler und geometrischen Anordnungen iteriert.

@@ -1,166 +1,50 @@
 % =============================================================================
 % ABKÜRZUNGSVERZEICHNIS UND GLOSSAR
 % -----------------------------------------------------------------------------
-% Zentrale Definitionsdatei für alle Abkürzungen und Fachbegriffe.
-% Stand: 12.11.2025 (Überarbeitet)
+% Reduzierte Version für Fachpublikum (6./7. Semester).
+% Trivialbegriffe und Grundlagen wurden entfernt.
 % =============================================================================
 
 % --- ABKÜRZUNGEN DEFINIEREN ---
 
-% Phasen
-\newacronym{l1}{L1}{Phase L1}
-\newacronym{l2}{L2}{Phase L2}
-\newacronym{l3}{L3}{Phase L3}
+% (Leer, da Begriffe wie L1, L2, L3, VDE, EMV für die Zielgruppe vorausgesetzt werden.
+% Falls spezifische Abkürzungen hinzukommen, hier einfügen.)
 
-% Organisationen und Normen
-\newacronym{vde}{VDE}{Verband der Elektrotechnik, Elektronik und Informationstechnik}
-
-% Technische Begriffe
-\newacronym{emv}{EMV}{Elektromagnetische Verträglichkeit}
-\newacronym{sps}{SPS}{Speicherprogrammierbare Steuerung}
-\newacronym{fem}{FEM}{Finite-Elemente-Methode}
-\newacronym{in}{I\textsubscript{N}}{Nennstrom}
-
-% Messverfahren (angepasste, präzisere Definition)
-\newacronym{acv}{ACV}{Wechselstrom-Messverfahren (engl. Alternating Current Verfahren)}
-\newacronym{dcv}{DCV}{Gleichstrom-Messverfahren (engl. Direct Current Verfahren)}
 
 % =============================================================================
 % --- FACHBEGRIFFE FÜRS GLOSSAR DEFINIEREN (ALPHABETISCH SORTIERT) ---
 % =============================================================================
 
-\newglossaryentry{acv-verfahren}{
-    name={ACV-Messverfahren},
-    description={Ein Messverfahren, das Wechselspannung und -strom nutzt, um frequenzabhängige Eigenschaften eines Bauteils zu bestimmen. Bei \glspl{messstromwandler} dient es typischerweise zur Ermittlung von Induktivitäten und Eisenverlusten.}
-}
-
-\newglossaryentry{bh-kennlinie}{
-    name={B(H)-Kennlinie},
-    plural={B(H)-Kennlinien},
-    description={Auch Magnetisierungskennlinie genannt. Beschreibt den nichtlinearen Zusammenhang zwischen der magnetischen Flussdichte (B) und der magnetischen Feldstärke (H) in einem ferromagnetischen Material. Sie ist essenziell zur Modellierung der \gls{magnetische-saettigung}.}
-}
-
-\newglossaryentry{biot-savart}{
-    name={Biot-Savart-Gesetz},
-    description={Ein Grundgesetz der Magnetostatik, das die Stärke und Richtung des Magnetfeldes berechnet, das von einem konstanten elektrischen Strom (DC) erzeugt wird.}
-}
-
-\newglossaryentry{buerde}{
-    name={Bürde},
-    plural={Bürden},
-    description={Die Bürde beschreibt die an den Sekundärkreis eines Messwandlers angeschlossene Last (Impedanz). Sie wird üblicherweise in Voltampere (VA) angegeben und ist entscheidend für die Einhaltung der Genauigkeitsklasse.}
-}
-
-\newglossaryentry{dcv-verfahren}{
-    name={DCV-Messverfahren},
-    description={Ein Messverfahren, das Gleichspannung und -strom verwendet, um rein ohmsche Widerstände zu messen. Bei einem \gls{messstromwandler} wird es zur präzisen Bestimmung des Kupferwiderstandes der Sekundärwicklung eingesetzt.}
-}
-
 \newglossaryentry{erwaermungspruefstand}{
     name={Erwärmungsprüfstand},
     plural={Erwärmungsprüfstände},
-    description={Ein spezieller Prüfaufbau zur Verifizierung des thermischen Verhaltens von Schaltanlagen nach \acrshort{vde}-Norm. Mittels eines regelbaren Hochstromtransformators wird der Nenn- oder Überlaststrom bei sehr geringer Spannung (typischerweise unter 10 V) in die Hauptstrombahnen eingespeist. Dies simuliert die reale Wärmeverlustleistung (I²R) im Betrieb und ermöglicht die Überprüfung, ob die entstehende Wärme zuverlässig abgeführt wird und keine unzulässig hohen Temperaturen an Komponenten wie \glspl{sammelschiene} oder Schaltgeräten auftreten.}
+    description={Hochstrom-Prüfanlage der Rolf Janssen GmbH. Dient in dieser Arbeit als Quelle für reale Hochströme (bis mehrere kA) bei Kleinspannung zur Simulation der Betriebsbedingungen.}
 }
 
 \newglossaryentry{femm}{
     name={FEMM},
     plural={FEMM},
-    description={Finite Element Method Magnetics. Eine quelloffene Software zur Simulation von 2D- und achsensymmetrischen Problemen der Elektrostatik und Magnetostatik. Sie wird häufig in der Elektrotechnik zur Analyse von magnetischen Feldern in Geräten wie Transformatoren oder Motoren eingesetzt.}
-}
-
-\newglossaryentry{fremdfeld}{
-    name={Fremdfeld},
-    plural={Fremdfelder},
-    description={Ein magnetisches oder elektrisches Feld, das von einer externen Quelle erzeugt wird und als Störgröße auf ein betrachtetes System einwirkt. Das Einwirken dieses Feldes (die Einkopplung) auf einen \gls{messstromwandler} kann dessen Messgenauigkeit beeinträchtigen.}
-}
-
-\newglossaryentry{genauigkeitsklasse}{
-    name={Genauigkeitsklasse},
-    plural={Genauigkeitsklassen},
-    description={Gibt die maximal zulässige prozentuale Messabweichung eines Messwandlers unter Nennbedingungen an. Gängige Klassen sind z.B. 0,2, 0,5 oder 1.}
-}
-
-\newglossaryentry{induktionsgesetz}{
-    name={Induktionsgesetz},
-    plural={Induktionsgesetze},
-    description={Das Faradaysche Induktionsgesetz ist eine physikalische Grundlage der Elektrotechnik. Es besagt, dass eine zeitliche Änderung des magnetischen Flusses durch eine Leiterschleife eine elektrische Spannung in dieser Schleife induziert. Dies ist das Funktionsprinzip von Transformatoren und somit auch von Messstromwandlern.}
+    description={Finite Element Method Magnetics. Die verwendete Open-Source-Software zur Simulation der magnetischen Flussdichteverteilung im 2D-Raum.}
 }
 
 \newglossaryentry{kompensationswiderstand}{
     name={Kompensationswiderstand},
     plural={Kompensationswiderstände},
-    description={Ein zusätzlich in den Sekundärkreis eines \gls{messstromwandler} geschalteter ohmscher Widerstand. Er dient dazu, eine \gls{unterbuerdung} zu kompensieren, indem die Gesamtimpedanz künstlich auf den Wert der Nennbürde angehoben wird.}
-}
-
-\newglossaryentry{leerlaufbetrieb}{
-    name={Leerlaufbetrieb (Stromwandler)},
-    description={Der unzulässige Betriebszustand eines \gls{messstromwandler}, bei dem die Sekundärwicklung offen ist (keine \gls{buerde} angeschlossen). Dies führt zu extrem hohen, gefährlichen Spannungsspitzen an den Sekundärklemmen und zur Zerstörung des Wandlers.}
-}
-
-\newglossaryentry{leiter}{
-    name={Leiter},
-    plural={Leiter},
-    description={Ein elektrisch leitendes Material, das dazu dient, elektrischen Strom zu führen. In Schaltanlagen sind dies typischerweise \glspl{sammelschiene} oder Kabel.}
-}
-
-\newglossaryentry{magnetische-saettigung}{
-    name={Magnetische Sättigung},
-    description={Ein Effekt in ferromagnetischen Werkstoffen, bei dem die magnetische Flussdichte (B) auch bei einer starken Erhöhung der äußeren magnetischen Feldstärke (H) nicht weiter ansteigt. Der Kern kann keinen weiteren magnetischen Fluss aufnehmen.}
-}
-
-\newglossaryentry{matlab}{
-    name={MATLAB},
-    description={Eine kommerzielle Software von The MathWorks, Inc. zur Lösung mathematischer Probleme und zur numerischen Simulation. Der Name steht für „Matrix Laboratory“.}
-}
-
-\newglossaryentry{messstromwandler}{
-    name={Messstromwandler},
-    plural={Messstromwandler},
-    description={Ein spezieller Transformator, der hohe Primärströme in ein proportionales, kleines und für Messgeräte verarbeitbares Sekundärsignal umwandelt. Im Fachjargon oft verkürzt als 'Wandler' bezeichnet.}
-}
-
-\newglossaryentry{nennstrom}{
-    name={Nennstrom},
-    plural={Nennströme},
-    description={Der vom Hersteller festgelegte Wert des Primärstroms (\acrshort{in}), für den ein \gls{messstromwandler} ausgelegt ist und bei dem er seine spezifizierte \gls{genauigkeitsklasse} einhält.}
-}
-
-\newglossaryentry{niederspannung}{
-    name={Niederspannung},
-    plural={Niederspannungen},
-    description={Bezeichnet nach IEC 60038 Wechselspannungen (AC) bis 1000 V und Gleichspannungen (DC) bis 1500 V. In diesem Bereich sind die meisten öffentlichen und industriellen Stromnetze angesiedelt.}
-}
-
-\newglossaryentry{niederspannungsschaltanlage}{
-    name={Niederspannungsschaltanlage},
-    plural={Niederspannungsschaltanlagen},
-    description={Eine Anlage zur Verteilung elektrischer Energie im Bereich der \gls{niederspannung}. Sie kombiniert Schaltgeräte zum Verbinden und Trennen von Stromkreisen mit Schutz- und Messeinrichtungen wie Sicherungen und Messstromwandlern.}
-}
-
-\newglossaryentry{phasenmittelabstand}{
-    name={Phasenmittelabstand},
-    plural={Phasenmittelabstände},
-    description={Der Mittenabstand zwischen den \glspl{sammelschiene} oder \glspl{leiter} benachbarter Phasen (z.B. von \acrshort{l1} zu \acrshort{l2}) in einem Drehstromsystem.}
+    description={Serieller Widerstand im Sekundärkreis, der eingesetzt wird, um die geringe Eingangsimpedanz moderner Digitalmessgeräte auszugleichen und die Nennbürde des Wandlers zu erreichen.}
 }
 
 \newglossaryentry{quasi-stationaer}{
     name={Quasi-stationäres Modell},
-    description={Ein Simulationsansatz, um ein zeitdynamisches Problem (z.B. 50-Hz-Wechselstrom) durch eine Serie von diskreten, zu einzelnen Zeitpunkten berechneten stationären (statischen) Zuständen anzunähern.}
-}
-
-\newglossaryentry{sammelschiene}{
-    name={Sammelschiene},
-    plural={Sammelschienen},
-    description={Ein massiver elektrischer Leiter aus Kupfer oder Aluminium in einer Schaltanlage, der zur Verteilung hoher Ströme auf mehrere Abgänge dient.}
+    description={Der in dieser Arbeit entwickelte Simulationsansatz, bei dem das dynamische 50-Hz-Verhalten durch eine automatisierte Sequenz statischer FEMM-Berechnungen diskreter Zeitpunkte angenähert wird.}
 }
 
 \newglossaryentry{unterbuerdung}{
     name={Unterbürdung},
-    description={Ein Betriebszustand, bei dem die angeschlossene sekundäre \gls{buerde} eines \gls{messstromwandler} signifikant niedriger ist als dessen Nennbürde. Dies tritt häufig bei der Verwendung moderner, niederohmiger Digitalmessgeräte mit älteren Wandlern auf und kann zu Messfehlern führen.}
+    description={Betriebszustand, bei dem die tatsächliche sekundäre Lastimpedanz deutlich kleiner ist als die spezifizierte Nennbürde, was insbesondere bei älteren Wandlern an moderner Messtechnik zu Fehlern führen kann.}
 }
 
 \newglossaryentry{wandler-kurzschlussklemme}{
     name={Wandler-Kurzschlussklemme},
     plural={Wandler-Kurzschlussklemmen},
-    description={Eine spezielle Anschlussklemme für die Sekundärseite von \glspl{messstromwandler}. Sie verfügt über einen Mechanismus (z.B. eine Brücke oder einen Schieber), um die Sekundärwicklung vor dem Trennen des Messgeräts sicher kurzzuschließen und so den gefährlichen \gls{leerlaufbetrieb} zu verhindern.}
+    description={Spezielle Anschlussklemme, die das gefahrlose Kurzschließen der Sekundärwicklung vor dem Auftrennen des Messkreises ermöglicht.}
 }
