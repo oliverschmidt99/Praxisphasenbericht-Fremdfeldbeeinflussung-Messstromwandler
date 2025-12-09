@@ -1,33 +1,50 @@
 \section{Reflexion}
 \label{chap:reflexion}
 
-\subsection{Was habe ich gelernt?}
+Dieses Kapitel fasst die gewonnenen Erkenntnisse der Praxisphase zusammen und ordnet die Ergebnisse in den Gesamtkontext ein. Dabei werden sowohl der fachliche Kompetenzzuwachs als auch die bewältigten Herausforderungen und daraus resultierende Optimierungspotenziale beleuchtet.
+
+ \subsection{Was habe ich gelernt?}
+
 \label{sec:gelernt}
+
 
 Während der Praxisphase konnte ich meine Kenntnisse in mehreren Bereichen erheblich erweitern.
 
+
 Im Bereich der \textbf{Softwareentwicklung} habe ich meine Programmierfähigkeiten durch zwei zentrale Projekte auf eine neue Ebene gebracht. Die Entwicklung des VBA-Tools in Excel zur systematischen Messdatenerfassung (Messprotokoll) schulte meine Fähigkeiten in der strukturierten Programmierung und im Datenbankdesign. Parallel dazu erforderte die Konzeption der maßgeschneiderten Simulationsumgebung (Webserver) Kenntnisse in Webtechnologien, um die \gls{femm}-Software anzusteuern und die Simulationen zu parametrieren.
 
-Fachlich habe ich ein tiefes Verständnis für die \textbf{Magnetfeldsimulation} entwickelt. Die größte Herausforderung – und damit der größte Lerneffekt – bestand darin, die stationäre \gls{femm}-Software durch die Web-Anwendung für \gls{quasi-stationaer}e 50-Hz-Wechselfelder nutzbar zu machen. Ich verstehe nun detailliert, wie komplexe physikalische Vorgänge, inklusive nichtlinearer Materialeigenschaften (\glspl{bh-kennlinie}) und \gls{magnetische-saettigung}seffekte, in einem 2D-Modell abgebildet werden.
+
+Fachlich habe ich ein tiefes Verständnis für die \textbf{Magnetfeldsimulation} entwickelt. Die größte Herausforderung – und damit der größte Lerneffekt – bestand darin, die stationäre \gls{femm}-Software durch die Web-Anwendung für \gls{quasi-stationaer}e nutzbar zu machen.
+
 
 Im praktischen Bereich der \textbf{Messtechnik} habe ich den sicheren Umgang mit dem \gls{erwaermungspruefstand} und professioneller Messtechnik erlernt. Dazu gehörte der normgerechte Aufbau nach DIN EN 61869-2, die korrekte Konfiguration der \gls{buerde} (inklusive \glspl{kompensationswiderstand}) und die systematische Durchführung von Genauigkeitsmessungen unter verschiedenen geometrischen Anordnungen.
+
 
 Theoretisch konnte ich mein im Studium erworbenes Wissen über den \textbf{Elektromagnetismus} stark vertiefen. Die intensive Auseinandersetzung mit der \gls{fremdfeld}problematik, dem \gls{induktionsgesetz} und der realen Funktionsweise von \glspl{messstromwandler} hat die theoretischen Grundlagen greifbar und praktisch anwendbar gemacht.
 
 
+
 \subsection{Was lief nicht so gut?}
+
 \label{sec:schwierigkeiten}
+
 
 Zu Beginn der Simulationsphase gab es Herausforderungen. Der erste Ansatz, die Magnetfeldkopplung mittels \gls{matlab} und dem \gls{biot-savart}-Gesetz zu berechnen, erwies sich als nicht zielführend. Dieses Modell konnte die physikalische Realität, insbesondere die nichtlinearen \gls{magnetische-saettigung}seffekte der ferromagnetischen Wandlerkerne, nicht ausreichend abbilden. Dieser Umweg kostete wertvolle Zeit.
 
-Eine weitere Schwierigkeit war die Einarbeitung in \gls{femm}. Die Software ist zwar leistungsstark, aber auf stationäre 2D-Probleme beschränkt. Die Notwendigkeit, daraus eine \gls{quasi-stationaer}e 50-Hz-Simulation zu entwickeln, erforderte die Konzeption einer zusätzlichen Software-Schicht (den Webserver), was den anfänglichen Aufwand erhöhte.
+
+Eine weitere Schwierigkeit war die Einarbeitung in \gls{femm}. Die Software ist zwar leistungsstark, aber auf stationäre 2D-Probleme beschränkt. Die Notwendigkeit, daraus eine \gls{quasi-stationaer}e zu entwickeln, erforderte die Konzeption einer zusätzlichen Software-Schicht (den Webserver), was den anfänglichen Aufwand erhöhte.
+
 
 Im messtechnischen Teil war die manuelle Protokollierung der Daten zu Beginn unstrukturiert. Wie in Abschnitt \ref{sec:messung:messprotokoll} beschrieben, erwies sich das Kopieren von Excel-Vorlagen als fehleranfällig und unpraktikabel für den Datenvergleich. Diese ineffiziente Methode musste überarbeitet werden, was zur Entwicklung des VBA-Tools führte.
 
 
+
 \subsection{Wie hätte man es besser machen können?}
+
 \label{sec:verbesserung}
+
 
 Rückblickend hätte der Simulationsprozess effizienter gestaltet werden können. Statt Zeit in den \gls{matlab}-Ansatz zu investieren, wäre eine frühere und tiefere Recherche nach etablierten FEM-Tools sinnvoll gewesen. Die Erkenntnis, dass die Nichtlinearität der \gls{bh-kennlinie} der entscheidende Faktor ist, hätte den Fokus direkt auf ein Werkzeug wie \gls{femm} lenken müssen.
 
-In diesem Zusammenhang steht auch die Einarbeitung in VBA. Diese Technologie war mir aus dem Studium oder Privatem nicht bekannt und wurde erst in der Praxisphase erlernt. Eine frühere Vermittlung dieser Kenntnisse seitens der Hochschule, etwa als praxisvorbereitende Aufgabe, wäre eine große Bereicherung für das Berufsleben. Rückblickend hätte dies nicht nur die Erstellung des Messprotokolls beschleunigt; auch die Simulationsumgebung (der "Webserver") hätte sich womöglich in kürzerer Zeit und mit einer ähnlichen grafischen Oberfläche direkt in Excel mittels VBA realisieren lassen.
+
+In diesem Zusammenhang steht auch die Einarbeitung in VBA. Diese Technologie war mir aus dem Studium oder Privatem nicht bekannt und wurde erst in der Praxisphase erlernt. Eine frühere Vermittlung dieser Kenntnisse seitens der Hochschule, etwa als praxisvorbereitende Aufgabe, wäre eine große Bereicherung für das Berufsleben. Rückblickend hätte dies nicht nur die Erstellung des Messprotokolls beschleunigt; auch die Simulationsumgebung (der "Webserver") hätte sich womöglich in kürzerer Zeit und mit einer ähnlichen grafischen Oberfläche direkt in Excel mittels VBA realisieren lassen. 

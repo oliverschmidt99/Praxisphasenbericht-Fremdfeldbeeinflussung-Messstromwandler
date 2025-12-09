@@ -13,7 +13,7 @@ Im Rahmen dieser Praxisphase wird die \gls{fremdfeld}beeinflussung auf \glspl{me
 \subsection{Motivation}
 \label{sec:motivation}
 
-In modernen \Glspl{niederspannungsschaltanlage} treffen konstruktive Anforderungen an eine kompakte Bauweise auf hohe Betriebsströme. Die daraus resultierende kompakte Anordnung der \glspl{sammelschiene} führt dazu, dass die starken magnetischen Wechselfelder der stromführenden \glspl{leiter} auf benachbarte \glspl{messstromwandler} koppeln. Diese \gls{fremdfeld}beeinflussung ist eine signifikante Ursache für Messfehler, **die** die Einhaltung der \gls{genauigkeitsklasse} beeinträchtigen kann und somit für Verrechnungszwecke nicht mehr zulässig ist. Besonders kritisch ist diese Kopplung für den Wandler der mittleren Phase \acrshort{l2}, da dieser von den Feldern der beiden äußeren Phasen \acrshort{l1} und \acrshort{l3} beeinflusst wird.
+In modernen \Glspl{niederspannungsschaltanlage} treffen konstruktive Anforderungen an eine kompakte Bauweise auf hohe Betriebsströme. Die daraus resultierende kompakte Anordnung der \glspl{sammelschiene} führt dazu, dass die starken magnetischen Wechselfelder der stromführenden \glspl{leiter} auf benachbarte \glspl{messstromwandler} koppeln. Diese \gls{fremdfeld}beeinflussung ist eine signifikante Ursache für Messfehler, die Einhaltung der \gls{genauigkeitsklasse} beeinträchtigen kann und somit für Verrechnungszwecke nicht mehr zulässig ist. Besonders kritisch ist diese Kopplung für den Wandler der mittleren Phase \acrshort{l2}, da dieser von den Feldern der beiden äußeren Phasen \acrshort{l1} und \acrshort{l3} beeinflusst wird.
 
 \subsection{Vorgehen}
 \label{sec:vorgehen}
@@ -32,7 +32,7 @@ Parallel dazu erfolgte eine umfassende Einarbeitung in die theoretischen Grundla
 \subsection{Erwärmungsprüfstand}
 \label{sec:erwaermungspruefstand}
 
-Der \gls{erwaermungspruefstand} (siehe Abbildung \ref{fig:erwaermungspruefstand_ohne_wandler}) ist die zentrale Messeinrichtung für dieses Projekt. Obwohl sein primärer Zweck, wie der Name andeutet, die thermische Analyse von \glspl{niederspannungsschaltanlage} nach \acrshort{vde}-Norm ist, liegt sein entscheidender Vorteil für diese Untersuchung in einer anderen Eigenschaft: Er kann die für den Realbetrieb typischen, sehr hohen \glspl{nennstrom} (bis zu mehreren Kiloampere) sicher und reproduzierbar erzeugen.
+Der \gls{erwaermungspruefstand} (siehe Abbildung \ref{fig:erwaermungspruefstand_ohne_wandler}) ist die zentrale Messeinrichtung für dieses Projekt. Obwohl sein primärer Zweck, wie der Name andeutet, die thermische Analyse von \glspl{niederspannungsschaltanlage} nach \acrshort{vde}-Norm ist, liegt sein entscheidender Vorteil für diese Untersuchung in einer anderen Eigenschaft: Er kann die für den Realbetrieb typischen, sehr hohen \glspl{nennstrom} bis zu mehreren Kiloampere erzeugen.
 
 Der Prüfstand nutzt einen Hochstromtransformator, um die benötigten Ströme bei sehr geringer Spannung (typischerweise < 10 V) in das \gls{sammelschiene}-System einzuspeisen. Für die Analyse der \gls{fremdfeld}beeinflussung ist dies die ideale Voraussetzung: Die hohen Ströme erzeugen die realitätsnahen, starken Magnetfelder, deren Kopplung auf die \glspl{messstromwandler} untersucht werden soll.
 
@@ -55,7 +55,6 @@ Für die spezifischen Anforderungen des Messaufbaus wurde auf Basis von \gls{fem
 Diese Lösung stellt eine Weboberfläche (siehe Abbildung \ref{fig:weboberflaeche}) bereit, über die sich die Simulationen definieren, parametrieren und starten lassen (siehe Abbildung \ref{fig:weboberflaeche_einstellungen}). Die Oberfläche dient als einheitliche Vorlage (Template) und ermöglicht die standardisierte Erstellung von Simulationsmodellen für verschiedene Wandlertypen und Sammelschienenanordnungen.
 
 Da \Gls{femm} ausschließlich stationäre Fälle betrachtet, implementiert die Hilfssoftware ein \gls{quasi-stationaer}, um die dynamischen Vorgänge anzunähern.
-Die Hauptherausforderung bei der Simulation bestand darin, die zeitharmonischen 50-Hz-Wechselfelder der \glspl{sammelschiene} darzustellen.
 Zu diskreten Zeitpunkten $t_n$ innerhalb einer Netzperiode berechnet die Hilfssoftware die jeweiligen Momentanwerte der Phasenströme $i_{L1}(t_n)$, $i_{L2}(t_n)$ und $i_{L3}(t_n)$. Diese Werte werden automatisiert an \gls{femm} übergeben, das für jeden Zeitschritt ein stationäres Magnetfeldproblem löst. Durch die Aneinanderreihung der Einzelergebnisse – insbesondere des magnetischen Flusses $\Psi(t_n)$ im Wandlerkern – lässt sich der zeitliche Verlauf über eine volle Periode rekonstruieren.
 
 \einfuegenBildGross{03_Ressourcen/Bilder/website_Simulations-Vorschau.png}{Weboberfläche der Simulationssoftware mit Vorschau des Modells}{fig:weboberflaeche}
@@ -82,7 +81,7 @@ Bei der Messung am \gls{erwaermungspruefstand} sollen die \glspl{messstromwandle
 \subsubsection{Messaufbau}
 \label{sec:messung:messaufbau}
 
-Ziel der Messungen ist es zu überprüfen, ob die \glspl{messstromwandler} auch unter dem Einfluss von \glspl{fremdfeld}, wie sie in einem Drehstromsystem durch benachbarte Phasen entstehen, die Anforderungen an die \gls{genauigkeitsklasse} der DIN-Norm 61869-2 einhalten. Die Grenzwerte für die Übersetzungsmessabweichung sind dazu in Tabelle~\ref{tab:grenzwerte_wandler_reduziert} dargestellt.
+Ziel der Messungen ist es zu überprüfen, ob die \glspl{messstromwandler} durch geometrische anpassung weiterhin unter dem Einfluss von \glspl{fremdfeld}, die Anforderungen an die \gls{genauigkeitsklasse} der DIN-Norm 61869-2 einhalten. Die Grenzwerte für die Übersetzungsmessabweichung sind dazu in Tabelle~\ref{tab:grenzwerte_wandler_reduziert} dargestellt.
 
 \begin{table}[H]
     \centering
@@ -122,7 +121,7 @@ In der folgenden Abbildung \ref{fig:erwaermungspruefstand_wandler_pos2} ist die 
 
 Nach der Montage am Schienensystem werden die \glspl{messstromwandler} verdrahtet. Dafür werden die Anschlüsse der Sekundärwicklung auf spezielle \glspl{wandler-kurzschlussklemme} geführt. Diese Klemmen ermöglichen ein sicheres Kurzschließen der Sekundärseite, bevor ein Messgerät entfernt oder getauscht wird. Zudem bieten diese Klemmen die Möglichkeit, Messgeräte direkt über Standard-Labormessleitungen anzuschließen.
 
-Dieser Schritt ist aus Sicherheitsgründen essenziell: Ein \gls{messstromwandler} darf niemals auf der Sekundärseite offen betrieben werden (\gls{leerlaufbetrieb}). Im Leerlauf würden an den offenen Klemmen extrem hohe und gefährliche Spannungen entstehen. Diese lebensgefährlichen Spannungsspitzen können die Isolation des Wandlers zerstören und stellen eine ernste Gefahr durch Stromschlag dar.
+Dieser Schritt ist aus Sicherheitsgründen essenziell: Ein \gls{messstromwandler} darf niemals auf der Sekundärseite offen betrieben werden. Im Leerlauf würden an den offenen Klemmen extrem hohe und gefährliche Spannungen entstehen. Diese lebensgefährlichen Spannungsspitzen können die Isolation des Wandlers zerstören und stellen eine ernste Gefahr durch Stromschlag dar.
 
 Ein weiterer wichtiger Aspekt ist die \gls{buerde} des Wandlers. \Glspl{messstromwandler} besitzen eine definierte Nennbürde (meist in VA angegeben), die im Betrieb eingehalten werden muss, damit der Wandler korrekte Messergebnisse innerhalb seiner \gls{genauigkeitsklasse} liefert.
 Das Ersatzschaltbild in Abbildung \ref{fig:esb_buerde} visualisiert die Komponenten der sekundärseitigen Gesamtimpedanz, die sich aus den Leitungswiderständen ($R_{Kabel}$), dem Messgerät ($A$) und dem, falls nötig, zusätzlichen \gls{kompensationswiderstand} ($R_{Kompensation}$) zusammensetzt.
@@ -131,7 +130,7 @@ Das Ersatzschaltbild in Abbildung \ref{fig:esb_buerde} visualisiert die Komponen
 
 Früher waren analoge Dreheisenmesswerke der Standard zur Strommessung. Da diese Messwerke eine signifikante interne \gls{buerde} (Eigenverbrauch) aufweisen, wurden die Wandler entsprechend für eine höhere Ausgangsbürde ausgelegt. Heutzutage erfolgen Messungen primär mittels digitaler Messgeräte. Diese sind im Strommessbereich extrem niederohmig (die Impedanz liegt oft deutlich unter 1 $\Omega$).
 
-Wird ein älterer Wandler, der für eine hohe \gls{buerde} ausgelegt ist, mit einem modernen, niederohmigen Messgerät betrieben, wird die Nennbürde nicht mehr erreicht. Man spricht von einer \gls{unterbuerdung}. Dieser Betriebszustand führt zu Messfehlern. Um dies zu kompensieren und den Wandler in seinem korrekten Arbeitsbereich zu betreiben, müssen zusätzliche \glspl{kompensationswiderstand} in den Sekundärkreis geschaltet werden (siehe $R_{Kompensation}$ in Abbildung \ref{fig:esb_buerde}), um die Gesamtimpedanz auf die Nennbürde des Wandlers zu erhöhen.
+Wird ein älterer Wandler, der für eine hohe \gls{buerde} ausgelegt ist, mit einem modernen, niederohmigen Messgerät betrieben, wird die Nennbürde nicht mehr erreicht. Man spricht von einer \gls{unterbuerdung}. Dieser Betriebszustand führt zu Messfehlern. Um dies zu kompensieren und den Wandler in seinem korrekten Arbeitsbereich zu betreiben, müssen zusätzliche \glspl{kompensationswiderstand} in den Sekundärkreis geschaltet werden (siehe in Abbildung \ref{fig:esb_buerde}), um die Gesamtimpedanz auf die Nennbürde des Wandlers zu erhöhen.
 
 \subsubsection{Messprotokoll}
 \label{sec:messung:messprotokoll}
@@ -204,37 +203,3 @@ Dazu wird der \gls{messstromwandler} zunächst in der ersten geometrischen Anord
 Für jeden einzelnen Prüfpunkt und für jede Phase (\acrshort{l1}, \acrshort{l2}, \acrshort{l3}) werden die exakten Ströme der Primär- und Sekundärseite mithilfe eines Referenzmessgeräts erfasst. Diese ermittelten Messwertpaare werden in das VBA-Messprotokoll (siehe Abbildung \ref{fig:tabelle_genauigkeit}) übertragen, welches daraus den Fehler berechnet.
 
 Um den Einfluss der \glspl{fremdfeld} durch die geometrische Anordnung zu untersuchen, wird der Messaufbau anschließend umgebaut. Beispielsweise wird, wie in Abbildung \ref{fig:erwaermungspruefstand_wandler_pos2} gezeigt, die Anordnung für Position 2 realisiert, bei der die mittlere Phase \acrshort{l2} nach vorne verlagert ist. Nach dem Umbau wird der gesamte Genauigkeits-Messzyklus für diese Position wiederholt. Dieser Prozess wird für alle zu untersuchenden Wandler und geometrischen Anordnungen iteriert.
-
-\subsection{Ergebnisse}
-\label{sec:ergebnisse}
-
-Die durchgeführten Messreihen am \gls{erwaermungspruefstand} sowie die korrespondierenden Simulationen in \gls{femm} liefern ein konsistentes Bild der \gls{fremdfeld}problematik. Die wesentlichen Ergebnisse werden im Folgenden zusammengefasst.
-
-\subsubsection{Validierung des Simulationsmodells}
-
-Zunächst wurde das in Abschnitt \ref{sec:simulation:modellaufbau} beschriebene \gls{femm}-Modell validiert. Hierzu wurden die Simulationsergebnisse für den magnetischen Fluss im Kern des \gls{messstromwandler}s direkt mit den Messwerten vom Prüfstand verglichen.
-
-Es zeigte sich eine hohe Übereinstimmung zwischen der simulierten und der gemessenen \gls{bh-kennlinie}. Insbesondere das Sättigungsverhalten bei hohen Feldstärken sowie der Kniepunkt der Kennlinie wurden vom \gls{quasi-stationaer}en Modell präzise abgebildet. Geringfügige Abweichungen sind primär auf die idealisierte 2D-Annahme der Simulation und leichte Ungenauigkeiten in den Materialdaten der FEMM-Bibliothek zurückzuführen. Das Modell wurde als ausreichend genau für die weitere Untersuchung der Fremdfeldkopplung bewertet.
-
-\subsubsection{Quantifizierung der Fremdfeldeinkopplung}
-
-Die Messungen bestätigten die in der Motivation (Abschnitt \ref{sec:motivation}) formulierte Hypothese: Der \gls{messstromwandler} der mittleren Phase (\acrshort{l2}) ist signifikant von den Magnetfeldern der Außenleiter (\acrshort{l1} und \acrshort{l3}) betroffen.
-
-Bei kompakter Anordnung (z.B. 70 mm \gls{phasenmittelabstand}) führt das \gls{fremdfeld} zu einer Vor-Magnetisierung des Ringkerns von Wandler \acrshort{l2}. Dieser Effekt ist besonders kritisch, da sich der Arbeitspunkt des Wandlers auf der \gls{bh-kennlinie} verschiebt. Der Kern gerät durch die Summe aus Nutzfeld (vom Strom $I_{L2}$) und Störfeld (von $I_{L1}$ und $I_{L3}$) periodisch in die \gls{magnetische-saettigung}.
-
-\subsubsection{Einfluss auf die Genauigkeitsklasse}
-
-Die \gls{magnetische-saettigung} durch das \gls{fremdfeld} wirkt sich direkt auf die Messgenauigkeit aus.
-% Hier könnte eine Abbildung eingefügt werden, die den Fehlerverlauf zeigt.
-% \einfuegenBildMittel{...}{Beispielhafte Messabweichung für Wandler L2}{fig:beispiel_genauigkeitskurve}
-Die Messungen zeigten, dass die \glspl{messstromwandler} bei 100~\% und 120~\% ihres \gls{nennstrom}s die \gls{genauigkeitsklasse} (z.B. Klasse 0,5) oft noch einhalten. Das Problem manifestiert sich jedoch bei kleinen Strömen:
-
-\begin{itemize}
-    \item \textbf{Messfehler bei 5~\% \acrshort{in}:} Bei geringen Primärströmen ist das Nutzsignal klein. Das (relativ dazu) starke \gls{fremdfeld} treibt den Kern jedoch bereits in die Nichtlinearität. Dies führte in vielen Messungen bei 5~\% \acrshort{in} zu einer Überschreitung der zulässigen Fehlergrenzen (siehe Tabelle \ref{tab:grenzwerte_wandler_reduziert}). Der Wandler verhält sich nicht mehr linear, und die Messabweichung stieg signifikant an.
-\end{itemize}
-
-\subsubsection{Wirkung geometrischer Änderungen}
-
-Die Messungen in "Position 2" (siehe Abbildung \ref{fig:erwaermungspruefstand_wandler_pos2}), bei der die Phase \acrshort{l2} nach vorne verlagert wurde, zeigten eine deutliche Verbesserung. Durch die Erhöhung des Abstands von \acrshort{l2} zu den Störquellen \acrshort{l1} und \acrshort{l3} wird die magnetische Kopplung reduziert.
-
-In dieser Anordnung konnte der Wandler \acrshort{l2} die \gls{genauigkeitsklasse} über den gesamten Messbereich (5~\% bis 120~\% \acrshort{in}) einhalten. Dies belegt, dass die geometrische Anordnung der \glspl{sammelschiene} der entscheidende Faktor zur Minimierung der \gls{fremdfeld}beeinflussung ist.
